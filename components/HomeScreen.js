@@ -1,53 +1,38 @@
 import {Button , View} from 'react-native';
+import { Text} from 'react-native';
+import fetch from 'node-fetch';
+import { useEffect , useState } from 'react';
+//let [categories , setCategories] = useState(null)
+
 
 const HomeScreen = ({navigation}) => {
+     const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchCategory = async () => {
+    const resp = await fetch("http://93.188.165.63:8080"); 
+    const data = await resp.json();
+    setData(data);
+    setLoading(false);
+    console.log(data)
+  };
+
+  fetchCategory()
+
+  //useEffect(fetchCategory , []);
+  //console.log(JSON.stringify(categories))
   return (
     <View>
-    <Button
-      title="Fresh Juices"
-      onPress={() =>
-        navigation.navigate('Category', {titleValue : 'Fresh Juices' , id : "freshjuice"})
-      }
-    />
+    {data.map(item => (
       <Button
-      title="Milk Shakes"
-      onPress={() =>
-        navigation.navigate('Category', {titleValue: 'Milk Shakes' , id: "milkshakes"})
-      }
-    />
-     <Button
-      title="Thick shake"
-      onPress={() =>
-        navigation.navigate('Category', {titleValue: 'Thick Shake', id: "thickshake"})
-      }
-    />
-     <Button
-      title="Detox Juices"
-      onPress={() =>
-        navigation.navigate('Category', {titleValue: 'Detox Juices' , id:"detoxjuices"})
-      }
-    />
-     <Button
-      title="Bowls and Sandwiches"
-      onPress={() =>
-        navigation.navigate('Category', {titleValue: 'Bowls and Sandwiches' , id:'bowlssandwiches'})
-      }
-    />
-     <Button
-      title="Hot Beverages"
-      onPress={() =>
-        navigation.navigate('Category', {titleValue : 'Hot Beverages' ,id:"hotbeverages"})
-      }
-    />
-     <Button
-      title="Ice Cream"
-      onPress={() =>
-        navigation.navigate('Category', {titleValue: 'Ice Cream', id:"icecream"})
-      }
-    />
+      title={item}
+      onPress = {()=>navigation.navigate('Category' , {titleValue :item , image: item})}></Button>
+    ))}
     </View>
     
   );
 };
 
 export default HomeScreen;
+
+

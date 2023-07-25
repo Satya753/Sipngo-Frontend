@@ -1,6 +1,5 @@
 
 const Base64Image   = ({base64String}) =>{
-    console.log(base64String);
     const binaryform = atob(base64String);
     const binarr = new Uint8Array(binaryform.length);
    

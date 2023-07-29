@@ -7,9 +7,33 @@ import SelectDropdown from 'react-native-select-dropdown';
 
 const slot = ["Evening" , "Morning"]
 const days = [7 , 14 , 30]
-const placeOrder = (cartItem , slot , days)=>{
-    userId = 'satya123'
+
+const placeOrder = async (cartItem , slot , days)=>{
+    let userId = 'satya123'
     console.log(cartItem , slot , days);
+    let postOrder = {};
+    postOrder["user_id"]=userId
+    postOrder["orders"] = []
+    postOrder["slot"] = slot
+    postOrder["days"] = days
+
+    for(const key in cartItem){
+        postOrder["orders"].push([cartItem[key].id , cartItem[key].cnt , cartItem[key].amount])
+    }
+
+    // Make a post request
+
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify(postOrder)
+    }
+
+    const responseData = await fetch('http://127.0.0.1:5000/home/add_order' , requestOptions)
+
+    console.log(postOrder)
 }
 const Checkout = ()=>{
 

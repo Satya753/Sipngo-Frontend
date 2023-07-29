@@ -3,7 +3,7 @@ import GlobalContext from './GlobalContext';
 
 const GlobalState = ({children}) =>{
     const [cartItem , setCartItem] = useState({});
-    const [showCart , setShowCart] = useState(false);
+    const [showCart , setShowCart] = useState(0);
 
     return (
         <GlobalContext.Provider value = {{cartItem , setCartItem , showCart , setShowCart}}>

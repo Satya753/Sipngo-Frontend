@@ -1,13 +1,24 @@
 import { Text, View, StyleSheet, Image } from 'react-native';
 import { Card } from '@rneui/themed';
 import { Button } from 'react-native-paper';
-import { useEffect , useState } from 'react';
+import { useContext, useEffect , useState } from 'react';
+import GlobalContext from './GlobalContext';
+import { useNavigation } from '@react-navigation/native';
 
-const Cart = (props)=>{
-    console.log("this is the cart" , props.value.cartItem)
+
+
+
+const Cart = ()=>{
+    const {cartItem , setCartItem} = useContext(GlobalContext);
+    const navigation = useNavigation();
     return(
     <View>
-        <div>{props.value.cartItem}</div>
+        {Object.keys(cartItem).map((key)=>(
+            <div>
+                <Text>{key}</Text>
+            </div>
+        ))}
+        <Button onPress={()=>navigation.navigate('Checkout')}>View Cart</Button>
     </View>
     )
 }

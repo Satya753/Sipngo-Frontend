@@ -2,6 +2,7 @@ import {Button , View} from 'react-native';
 import { Text} from 'react-native';
 import fetch from 'node-fetch';
 import { useEffect , useState } from 'react';
+import Cart from './Cart';
 //let [categories , setCategories] = useState(null)
 
 
@@ -21,6 +22,7 @@ const HomeScreen = ({navigation}) => {
   //console.log(JSON.stringify(categories))
   return (
     <View>
+      <Cart/>
     {data.map(item => (
       <Button
       title={item[0]}

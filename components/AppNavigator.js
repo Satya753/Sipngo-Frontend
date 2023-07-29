@@ -5,6 +5,7 @@ import HomeScreen from './HomeScreen'
 import Category from './Category'
 import Evening from './Evening'
 import Morning from './Morning'
+import Checkout from './Checkout';
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
@@ -21,6 +22,11 @@ const AppNavigator = () => {
           component = {Category}
           options={({ route }) => ({ title: route.params.titleValue})}
           />
+          <Stack.Screen 
+          name = "Checkout"
+          component={Checkout}
+          >
+          </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

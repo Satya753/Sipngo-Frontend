@@ -31,7 +31,7 @@ const placeOrder = async (cartItem , slot , days)=>{
         body: JSON.stringify(postOrder)
     }
 
-    const responseData = await fetch('http://127.0.0.1:5000/home/add_order' , requestOptions)
+    const responseData = await fetch('http://192.168.29.18:5000/home/add_order' , requestOptions)
 
     console.log(postOrder)
 }

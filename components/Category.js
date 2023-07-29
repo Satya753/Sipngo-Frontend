@@ -21,7 +21,7 @@ export default function Category({navigation}){
   const {showCart , setShowCart} = useContext(GlobalContext);
   const fetchCategory = async (id) => {
     //id = 12
-    const resp = await fetch(`http://127.0.0.1:5000/home/category?id=${id}`).then(res => res.json()); 
+    const resp = await fetch(`http://192.168.29.18:5000/home/category?id=${id}`).then(res => res.json()); 
     console.log(resp);
     setData(resp);
     setLoading(false);

@@ -11,7 +11,7 @@ const HomeScreen = ({navigation}) => {
   const [loading, setLoading] = useState(true);
 
   const fetchCategory = async () => {
-    const resp = await fetch("http://127.0.0.1:5000/home"); 
+    const resp = await fetch("http://192.168.29.18:5000/home"); 
     const data = await resp.json();
     setData(data);
     setLoading(false);

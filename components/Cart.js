@@ -14,9 +14,9 @@ const Cart = ()=>{
     return(
     <View>
         {Object.keys(cartItem).map((key)=>(
-            <div>
+            <View>
                 <Text>{key}</Text>
-            </div>
+            </View>
         ))}
         <Button onPress={()=>navigation.navigate('Checkout')}>View Cart</Button>
     </View>

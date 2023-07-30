@@ -76,7 +76,7 @@ const Checkout = ()=>{
     return(
     <View>
         {Object.keys(cartItem).map((key)=>(
-            <div>
+            <View>
                 <Text>{key}</Text>
                 <View>
                 <Text>{cartItem[key].amount}</Text>
@@ -84,7 +84,7 @@ const Checkout = ()=>{
                 <Button onPress={()=>addToCart(cartItem[key].amount , key)}>Add</Button>
                  <Button onPress = {()=>removeFromCart(cartItem[key].amount , key)}>Remove</Button>
                 </View>
-            </div>
+            </View>
         ))}
     <SelectDropdown
     defaultButtonText='select a slot'

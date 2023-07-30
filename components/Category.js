@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image,ScrollView } from 'react-native';
 import { useRoute  } from "@react-navigation/native"
 import { Card } from '@rneui/themed';
 import { Button } from 'react-native-paper';
@@ -7,7 +7,7 @@ import Base64Image from './Base64Image';
 import GlobalContext from './GlobalContext';
 import Cart from './Cart';
 import { render } from 'react-dom';
-
+import { t } from 'react-native-tailwindcss';
 
 
 export default function Category({navigation}){
@@ -57,23 +57,26 @@ export default function Category({navigation}){
   }
   
   return (
-    <div>
+    <View style={[t.hFull]}>
       <View>
       { showCart>=1? <Cart navigation={navigation}/>: null} 
       </View>
+      <ScrollView>
     {data.map(item => (
-    <div>
-     <Card.Title></Card.Title><Card.Divider /><View style={{ position: "relative", alignItems: "center" }}>
-       <Base64Image base64String={item[2]}></Base64Image>
+    <View style={[t.h90]}>
+     <Card.Title></Card.Title><Card.Divider />
+     <View style={{ position: "relative", alignItems: "center" }}>
+        <Base64Image base64String={item[2]} />  
       <Text>{item[0]}</Text>
       <Text>{item[1]}</Text>
       <Button onPress={()=>addToCart(item[0] , item[1] , item[3])}>Add</Button>
-      {showCart>=1?<Button onPress = {()=>removeFromCart(item[0] , item[1])}>Remove</Button>:null}
+      {showCart>=1?<Button style={[t.p2]} onPress = {()=>removeFromCart(item[0] , item[1])}>Remove</Button>:null}
       </View> 
-      </div>
+      </View>
     ))}
-    
-    </div>
+    </ScrollView>
+
+    </View>
      
   )
 }

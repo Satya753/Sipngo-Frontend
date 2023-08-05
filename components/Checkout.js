@@ -4,7 +4,8 @@ import { Button } from 'react-native-paper';
 import { useContext, useEffect , useState } from 'react';
 import GlobalContext from './GlobalContext';
 import SelectDropdown from 'react-native-select-dropdown';
-
+import {t} from 'react-native-tailwindcss'
+import config from '../Utils/Config';
 const slot = ["Evening" , "Morning"]
 const days = [7 , 14 , 30]
 
@@ -31,14 +32,14 @@ const placeOrder = async (cartItem , slot , days)=>{
         body: JSON.stringify(postOrder)
     }
 
-    const responseData = await fetch('http://192.168.29.18:5000/home/add_order' , requestOptions)
+    const responseData = await fetch(`${config.flaskapi}/home/add_order`, requestOptions)
 
-    console.log(postOrder)
 }
 const Checkout = ()=>{
 
     const {cartItem , setCartItem} = useContext(GlobalContext);
  //   const {showCart , setShowCart} = useContext(GlobalContext);
+ 
 
 
     const addToCart = (amount , name) =>{
@@ -54,7 +55,6 @@ const Checkout = ()=>{
        // setShowCart(showCart+1);
         
         setCartItem(curCart);
-        console.log(cartItem);
       }
     
       const removeFromCart=(amount , name)=>{
@@ -75,8 +75,9 @@ const Checkout = ()=>{
 
     return(
     <View>
+      <View>
         {Object.keys(cartItem).map((key)=>(
-            <View>
+            <View style ={[t.itemsCenter]}>
                 <Text>{key}</Text>
                 <View>
                 <Text>{cartItem[key].amount}</Text>
@@ -86,12 +87,13 @@ const Checkout = ()=>{
                 </View>
             </View>
         ))}
+        </View>
+        <View style ={[t.itemsCenter]}>
     <SelectDropdown
     defaultButtonText='select a slot'
 	data={slot}
 	onSelect={(selectedItem, index) => {
         selectedSlot = selectedItem;
-		console.log(selectedItem, index)
 	}}
 	buttonTextAfterSelection={(selectedItem, index) => {
 		return selectedItem
@@ -102,11 +104,10 @@ const Checkout = ()=>{
     >
     </SelectDropdown>
     <SelectDropdown
-    defaultButtonText='select no of days'
+    defaultButtonText='select subscription'
 	data={days}
 	onSelect={(selectedItem, index) => {
         selectedDays = selectedItem;
-		console.log(selectedItem, index)
 	}}
 	buttonTextAfterSelection={(selectedItem, index) => {
 		return selectedItem
@@ -116,6 +117,7 @@ const Checkout = ()=>{
 	}}
     ></SelectDropdown>
     <Button onPress = {()=>placeOrder(cartItem , selectedSlot  , selectedDays)}>Place Order</Button>
+    </View>
     </View>
     )
 }

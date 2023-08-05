@@ -6,8 +6,8 @@ import Category from './Category'
 import Evening from './Evening'
 import Morning from './Morning'
 import Checkout from './Checkout';
+import Categories from './Categories';
 const Stack = createStackNavigator();
-
 const AppNavigator = () => {
   return (
     <NavigationContainer>
@@ -18,8 +18,8 @@ const AppNavigator = () => {
           options={{title: 'Browse by Category'}}
         />
         <Stack.Screen
-          name = "Category"
-          component = {Category}
+          name = "Categories"
+          component = {Categories}
           options={({ route }) => ({ title: route.params.titleValue})}
           />
           <Stack.Screen 

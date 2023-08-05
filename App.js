@@ -10,14 +10,18 @@ import AssetExample from './components/AssetExample';
 // or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
 import GlobalContext from './components/GlobalContext';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export default function App() {
   return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
     <View style={styles.container}>
       <GlobalState>
         <AppNavigator/>
       </GlobalState>
     </View>
+    </GestureHandlerRootView>
+
   );
 }
 

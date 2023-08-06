@@ -15,7 +15,7 @@ const AppNavigator = () => {
        <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{title: 'Browse by Category'}}
+          options={{title: 'Shop by Category'}}
         />
         <Stack.Screen
           name = "Categories"

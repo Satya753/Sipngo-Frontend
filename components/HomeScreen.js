@@ -1,4 +1,4 @@
-import {Button , View} from 'react-native';
+import {Button , View , FlatList} from 'react-native';
 import { Text} from 'react-native';
 import fetch from 'node-fetch';
 import { useEffect , useState } from 'react';
@@ -30,10 +30,11 @@ const HomeScreen = ({navigation}) => {
     <View>
       <View  style = {[ t.pT8 , t.pB8 , t.mBAuto ]}>
       <ScrollView>
-    {data.map(item => (
-      <Category Name={item[0]} Value={item[0]} Id={item[1]} Image = {item[2]}>
-      </Category>
-    ))}
+        <FlatList
+        data = {data}
+        numColumns={2}
+        renderItem={({item}) =>  <Category Name={item[0]} Value={item[0]} Id={item[1]} Image = {item[2]}></Category>}>
+    </FlatList>
     </ScrollView>
     </View>
     <Footer/>

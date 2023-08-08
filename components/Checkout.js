@@ -1,13 +1,15 @@
-import { Text, View, StyleSheet, Image } from 'react-native';
-import { Card } from '@rneui/themed';
-import { Button } from 'react-native-paper';
+import { Text, View, StyleSheet, Image , FlatList } from 'react-native';
+import { Button , Card} from 'react-native-paper';
 import { useContext, useEffect , useState } from 'react';
 import GlobalContext from './GlobalContext';
 import SelectDropdown from 'react-native-select-dropdown';
 import {t} from 'react-native-tailwindcss'
 import config from '../Utils/Config';
+import { ScrollView , TouchableOpacity } from 'react-native-gesture-handler';
+import {styled} from 'react-native-tailwindcss'
 const slot = ["Evening" , "Morning"]
 const days = [7 , 14 , 30]
+
 
 const placeOrder = async (cartItem , slot , days)=>{
     let userId = 'satya123'
@@ -33,6 +35,7 @@ const placeOrder = async (cartItem , slot , days)=>{
     }
 
     const responseData = await fetch(`${config.flaskapi}/home/add_order`, requestOptions)
+    setCartItem({})
 
 }
 const Checkout = ()=>{
@@ -45,7 +48,6 @@ const Checkout = ()=>{
     const addToCart = (amount , name) =>{
         const curCart = {...cartItem};
         if (name in curCart){
-          curCart[name].amount += amount;
           curCart[name].cnt+=1;
         }
         else{
@@ -59,7 +61,6 @@ const Checkout = ()=>{
     
       const removeFromCart=(amount , name)=>{
         const curCart = {...cartItem};
-        curCart[name].amount-=amount;
         curCart[name].cnt-=1;
     
         if (curCart[name].cnt==0){
@@ -74,20 +75,38 @@ const Checkout = ()=>{
       
 
     return(
-    <View>
-      <View>
+    <View style  = {[t.p13, t.m18 , t.flexCol , t.flex1]}>
+        <ScrollView style = {[t.h20]}>
         {Object.keys(cartItem).map((key)=>(
-            <View style ={[t.itemsCenter]}>
+          <Card style={[ t.justifyBetween]}>
+            <View style ={[ t.flexRow , t.p10 , t.m4]}>
+                <View style = {[t.m4]}>
                 <Text>{key}</Text>
-                <View>
-                <Text>{cartItem[key].amount}</Text>
-                <Text>{cartItem[key].cnt}</Text>    
-                <Button onPress={()=>addToCart(cartItem[key].amount , key)}>Add</Button>
-                 <Button onPress = {()=>removeFromCart(cartItem[key].amount , key)}>Remove</Button>
                 </View>
+                {/* <Text>{cartItem[key].amount}</Text>
+                <Text>{cartItem[key].cnt}</Text>     */}
+                <View style = {[t.h9, t.w28, t.flexRow , t.bgGreen600 , t.m4 , t.end0]}>
+                <View >
+                <Button onPress = {()=>removeFromCart(cartItem[key].amount , key)}>-</Button>
+                </View>
+                <View>
+                <Text>{cartItem[key].cnt}</Text>
+                </View>
+                <View >
+                 <Button onPress={()=>addToCart(cartItem[key].amount , key)}>+</Button>
+                </View>
+                </View>
+
+                <View>
+                  <Text>Total Amount</Text>
+                  <Text>{cartItem[key].amount*cartItem[key].cnt}</Text>
+                </View>
+              
             </View>
+            </Card>
         ))}
-        </View>
+        </ScrollView>
+      
         <View style ={[t.itemsCenter]}>
     <SelectDropdown
     defaultButtonText='select a slot'
@@ -104,7 +123,7 @@ const Checkout = ()=>{
     >
     </SelectDropdown>
     <SelectDropdown
-    defaultButtonText='select subscription'
+    defaultButtonText='Select subscription'
 	data={days}
 	onSelect={(selectedItem, index) => {
         selectedDays = selectedItem;

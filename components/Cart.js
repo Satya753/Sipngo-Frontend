@@ -12,12 +12,12 @@ const Cart = ()=>{
     const {cartItem , setCartItem} = useContext(GlobalContext);
     const navigation = useNavigation();
     return(
-    <View style  = {[t.h25, t.bgBlue200  , t.justifyEvenly ,t.flexRow ,t.p5]}>
-            <View style = {[t.p3]}>
-                <Text>{Object.length} Item in Cart</Text>
+    <View style  = {[t.h13, t.bgWhite  , t.justifyEvenly ,t.flexRow ,t.p5]}>
+            <View style = {[t.p6]}>
+                <Text>{Object.keys(cartItem).length} ITEM</Text>
             </View>
-            <View style = {[t.p3 , t.right0]}>
-                <Button style = {[t.bgGreen400 , t.w20 ]}onPress={()=>navigation.navigate('Checkout')}>Next</Button>
+            <View style = {[t.p3 , t.right10 , t.textWhite]}>
+                <Button style = {[t.bgGreen600 , t.w40  , t.right10 , t.textWhite]}onPress={()=>navigation.navigate('Checkout')}>Next</Button>
             </View>
     </View>
     )

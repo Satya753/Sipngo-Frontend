@@ -1,7 +1,7 @@
 import {Button , View , FlatList} from 'react-native';
 import { Text} from 'react-native';
 import fetch from 'node-fetch';
-import { useEffect , useState } from 'react';
+import { useContext, useEffect , useState } from 'react';
 import Cart from './Cart';
 import config from '../Utils/Config';
 //let [categories , setCategories] = useState(null)
@@ -9,9 +9,11 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Category from './Category';
 import Footer from './Footer';
 import {t} from 'react-native-tailwindcss'
+import GlobalContext from './GlobalContext';
 const HomeScreen = ({navigation}) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const  {cartItem , setCartItem} = useContext(GlobalContext);
 
   const fetchCategory = async () => {
     const resp = await fetch(`${config.flaskapi}/home`); 
@@ -37,7 +39,7 @@ const HomeScreen = ({navigation}) => {
     </FlatList>
     </ScrollView>
     </View>
-    <Footer/>
+    {Object.keys(cartItem).length>=1 ? <Footer/> : null}
     </View>
     
   );

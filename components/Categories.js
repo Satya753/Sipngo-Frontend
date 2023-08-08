@@ -66,12 +66,12 @@ export default function Categories({navigation}){
       <Text>{item[0]}</Text>
       <Text>{item[1]}</Text>
       <Button onPress={()=>addToCart(item[0] , item[1] , item[3])}>Add</Button>
-      {showCart>=1?<Button style={[t.p2]} onPress = {()=>removeFromCart(item[0] , item[1])}>Remove</Button>:null}
+      {cartItem[item[1]]?.cnt>=1?<Button style={[t.p2]} onPress = {()=>removeFromCart(item[0] , item[1])}>Remove</Button>:null}
       </View> 
       </View>
     ))}
     </ScrollView>
-    <Footer/>
+    {Object.keys(cartItem).length>=1 ? <Footer/> : null}
     </View>
      
   )

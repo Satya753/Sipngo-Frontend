@@ -14,10 +14,10 @@ const Cart = ()=>{
     return(
     <View style  = {[t.h13, t.bgWhite  , t.justifyEvenly ,t.flexRow ,t.p5]}>
             <View style = {[t.p6]}>
-                <Text>{Object.keys(cartItem).length} ITEM</Text>
+                <Text style={[t.fontSemibold]}>{Object.keys(cartItem).length} ITEM</Text>
             </View>
-            <View style = {[t.p3 , t.right10 , t.textWhite]}>
-                <Button style = {[t.bgGreen600 , t.w40  , t.right10 , t.textWhite]}onPress={()=>navigation.navigate('Checkout')}>Next</Button>
+            <View style = {[t.p3 , t.right10 , t.textWhite , t.roundedFull]}>
+                <Button style = {[t.bgGreen600 , t.w40  , t.right10 , t.textWhite  , t.roundedLg]}onPress={()=>navigation.navigate('Checkout')}><Text style={[t.textWhite]}>Next</Text></Button>
             </View>
     </View>
     )

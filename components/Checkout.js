@@ -7,6 +7,7 @@ import {t} from 'react-native-tailwindcss'
 import config from '../Utils/Config';
 import { ScrollView , TouchableOpacity } from 'react-native-gesture-handler';
 import {styled} from 'react-native-tailwindcss'
+import Base64Image from './Base64Image';
 const slot = ["Evening" , "Morning"]
 const days = [7 , 14 , 30]
 
@@ -35,7 +36,7 @@ const placeOrder = async (cartItem , slot , days)=>{
     }
 
     const responseData = await fetch(`${config.flaskapi}/home/add_order`, requestOptions)
-    setCartItem({})
+    
 
 }
 const Checkout = ()=>{
@@ -78,38 +79,31 @@ const Checkout = ()=>{
     <View style  = {[t.p13, t.m18 , t.flexCol , t.flex1]}>
         <ScrollView style = {[t.h20]}>
         {Object.keys(cartItem).map((key)=>(
-          <Card style={[ t.justifyBetween]}>
-            <View style ={[ t.flexRow , t.p10 , t.m4]}>
-                <View style = {[t.m4]}>
-                <Text>{key}</Text>
+          <View style={[ t.flexRow , t.p2 , t.m10 , t.h7]}>
+                <View style = {[t.m4 , t.flexCol]}>
+                <View><Base64Image base64String={cartItem[key].image}/></View>
+                <View style={[t.justifyCenter]}><Text>{key}</Text></View>
                 </View>
                 {/* <Text>{cartItem[key].amount}</Text>
                 <Text>{cartItem[key].cnt}</Text>     */}
-                <View style = {[t.h9, t.w28, t.flexRow , t.bgGreen600 , t.m4 , t.end0]}>
-                <View >
-                <Button onPress = {()=>removeFromCart(cartItem[key].amount , key)}>-</Button>
+                <View style = {[t.flexCol , t.p4 , t.justifyCenter]}>
+                <View style = {[t.flexRow , t.bgGreen600 , t.roundedFull]}>
+                <Button onPress = {()=>removeFromCart(cartItem[key].amount , key)}><Text style={[t.textWhite , t.fontExtrabold	]}>-</Text></Button>
+                <View style={[t.justifyCenter]}><Text  style={[t.textWhite , t.fontExtrabold	]}>{cartItem[key].cnt}</Text></View>
+                <Button onPress={()=>addToCart(cartItem[key].amount , key)}><Text  style={[t.textWhite , t.fontExtrabold	]}>+</Text></Button>
                 </View>
-                <View>
-                <Text>{cartItem[key].cnt}</Text>
-                </View>
-                <View >
-                 <Button onPress={()=>addToCart(cartItem[key].amount , key)}>+</Button>
-                </View>
-                </View>
-
-                <View>
-                  <Text>Total Amount</Text>
+                <View style =  {[t.flexRow , t.justifyCenter]}>
+                  <Text>Amount   </Text>
                   <Text>{cartItem[key].amount*cartItem[key].cnt}</Text>
                 </View>
-              
+                </View>
             </View>
-            </Card>
         ))}
         </ScrollView>
       
         <View style ={[t.itemsCenter]}>
     <SelectDropdown
-    defaultButtonText='select a slot'
+    defaultButtonText='select a Slot'
 	data={slot}
 	onSelect={(selectedItem, index) => {
         selectedSlot = selectedItem;
@@ -123,7 +117,7 @@ const Checkout = ()=>{
     >
     </SelectDropdown>
     <SelectDropdown
-    defaultButtonText='Select subscription'
+    defaultButtonText='Select Subscription'
 	data={days}
 	onSelect={(selectedItem, index) => {
         selectedDays = selectedItem;
@@ -135,7 +129,9 @@ const Checkout = ()=>{
 		return item
 	}}
     ></SelectDropdown>
-    <Button onPress = {()=>placeOrder(cartItem , selectedSlot  , selectedDays)}>Place Order</Button>
+    <View style={[t.roundedFull , t.bgBlue700 , t.textWhite]}>
+    <Button onPress = {()=>placeOrder(cartItem , selectedSlot  , selectedDays)}> <Text style={[t.textWhite]}>Place Order</Text></Button>
+    </View>
     </View>
     </View>
     )

@@ -28,13 +28,14 @@ export default function Categories({navigation}){
   //console.log(fetchCategory(route.params.titleId))
   useEffect(() =>{fetchCategory(route.params.titleId)} , [])
 
-  const addToCart = (amount , name , id) =>{
+  const addToCart = (amount , name , id , image) =>{
     const curCart = {...cartItem};
     if (name in curCart){
       curCart[name].cnt+=1;
     }
     else{
-      curCart[name] = {"amount":amount , "cnt":1 , "id":id};
+      curCart[name] = {"amount":amount , "cnt":1 , "id":id , "image":image};
+
     }
 
     setShowCart(showCart+1);
@@ -65,7 +66,7 @@ export default function Categories({navigation}){
         <Base64Image base64String={item[2]} />  
       <Text>{item[0]}</Text>
       <Text>{item[1]}</Text>
-      <Button onPress={()=>addToCart(item[0] , item[1] , item[3])}>Add</Button>
+      <Button onPress={()=>addToCart(item[0] , item[1] , item[3] , item[2])}>Add</Button>
       {cartItem[item[1]]?.cnt>=1?<Button style={[t.p2]} onPress = {()=>removeFromCart(item[0] , item[1])}>Remove</Button>:null}
       </View> 
       </View>

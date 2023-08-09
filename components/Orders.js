@@ -9,8 +9,7 @@ import Category from './Category';
 
 
 const Orders = ()=>{
-
-
+    
 }
 
 export default Orders;

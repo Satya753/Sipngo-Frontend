@@ -7,6 +7,7 @@ import Evening from './Evening'
 import Morning from './Morning'
 import Checkout from './Checkout';
 import Categories from './Categories';
+import Signin from './Signin';
 const Stack = createStackNavigator();
 const AppNavigator = () => {
   return (

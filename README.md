@@ -9,3 +9,21 @@ All projects created in Snack are publicly available, so you can easily share th
 If you're having problems, you can tweet to us [@expo](https://twitter.com/expo) or ask in our [forums](https://forums.expo.dev/c/expo-dev-tools/61) or [Discord](https://chat.expo.dev/).
 
 Snack is Open Source. You can find the code on the [GitHub repo](https://github.com/expo/snack).
+
+
+npx expo install expo-dev-client
+npx expo install  react-native-web@~0.19.6 react-dom@18.2.0 @expo/webpack-config
+npm install
+
+
+node --version 
+>=v20.0.0
+
+
+npm --version
+>=9.8.0
+
+
+npx --version
+>=9.8.0
+

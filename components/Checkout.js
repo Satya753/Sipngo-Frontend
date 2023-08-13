@@ -13,7 +13,7 @@ const days = [7 , 14 , 30]
 
 
 const placeOrder = async (cartItem , slot , days)=>{
-    let userId = 'satya123'
+    let userId = global.d['uid']
     console.log(cartItem , slot , days);
     let postOrder = {};
     postOrder["user_id"]=userId

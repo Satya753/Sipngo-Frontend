@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { Text, View, StyleSheet, Image  , FlatList } from 'react-native';
+import { Card  } from 'react-native-paper';
+import { useContext, useEffect , useState } from 'react';
+import GlobalContext from './GlobalContext';
 import { Input, Button } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
+import {t , tw} from 'react-native-tailwindcss';
 import { initializeApp } from "firebase/app";
 import '../config/firebase';
 import {getAuth , signInWithEmailAndPassword} from 'firebase/auth';
@@ -36,7 +40,6 @@ export default  function Signin() {
   return (
     <View>
        <Text>Sign In</Text>
-
       {!!value.error && <View>{value.error}</View>}
 
        <View>
@@ -56,8 +59,8 @@ export default  function Signin() {
       </View>
 
       <View>
-        <Button title = "Sign In" onPress = {doSignIn}/>
-      </View>
+        <Button onPress = {doSignIn} title = "Sign In" />
+      </View> 
     </View>
   );
 }

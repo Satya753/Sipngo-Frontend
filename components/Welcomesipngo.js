@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text , Button } from 'react-native';
-import {useNavigation} from '@react-navigation/native'
+import { Text, View, StyleSheet, Image  , FlatList } from 'react-native';
+import { Button , Card} from 'react-native-paper';
+import { useContext, useEffect , useState } from 'react';
+import GlobalContext from './GlobalContext';
+import { useNavigation } from '@react-navigation/native';
+import {t , tw} from 'react-native-tailwindcss';
+
 export default  function Welcomesipngo() {
 
     const navigation = useNavigation();
 
   return (
     <View>
-      <Button onPress = {()=>navigation.navigate('Sign In')}><Text>Sign In</Text></Button>
-      <Button onPress = {()=>navigation.navigate('Sign Up')}><Text>Sign Up</Text></Button>
+    <Button style = {[t.bgGreen600 , t.w40  , t.right10 , t.textWhite  , t.roundedLg]}onPress={()=>navigation.navigate('Signin')}><Text style={[t.textWhite]}>Sign In</Text></Button>
+    <Button style = {[t.bgGreen600 , t.w40  , t.right10 , t.textWhite  , t.roundedLg]}onPress={()=>navigation.navigate('Signup')}><Text style={[t.textWhite]}>Sign Up</Text></Button>
     </View>
   );
 }

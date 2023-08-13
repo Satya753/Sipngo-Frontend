@@ -53,6 +53,8 @@ export default function Categories({navigation}){
     setShowCart(showCart-1);
     setCartItem(curCart);
   }
+
+  console.log('from categories' , global.d)
   
   return (
     <View style={[t.hFull]}>

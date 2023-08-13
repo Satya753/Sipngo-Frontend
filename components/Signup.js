@@ -11,7 +11,7 @@ export default  function Signup() {
 
   const [value , setValue] = useState({email:'' , password:'' , error:''});
 
-  async function doSignIn(){
+  async function doSignup(){
     if (value.email=='' || value.password==''){
         {
             setValue({...value , error:'Email and Password are mandatory'})
@@ -35,7 +35,7 @@ export default  function Signup() {
 
   return (
     <View>
-       <Text>Sign In</Text>
+       <Text>Sign Up</Text>
 
       {!!value.error && <View>{value.error}</View>}
 
@@ -56,8 +56,8 @@ export default  function Signup() {
       </View>
 
       <View>
-        <Button title = "Sign In" onPress = {doSignIn}/>
-      </View>
+        <Button  onPress = {doSignup} title = "Sign Up"/>
+      </View> 
     </View>
   );
 }

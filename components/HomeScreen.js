@@ -10,6 +10,7 @@ import Category from './Category';
 import Footer from './Footer';
 import {t} from 'react-native-tailwindcss'
 import GlobalContext from './GlobalContext';
+import Signout from './Signout';
 const HomeScreen = ({navigation}) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -31,6 +32,7 @@ const HomeScreen = ({navigation}) => {
   return (
     <View>
       <View  style = {[ t.pT8 , t.pB8 , t.mBAuto ]}>
+        <Signout/>
       <ScrollView>
         <FlatList
         data = {data}

@@ -12,8 +12,8 @@ export default function AuthStack(){
         <NavigationContainer>
             <Stack.Navigator>
             <Stack.Screen name = "Welcome Sipngo" component={Welcomesipngo}/>
-            <Stack.Screen name="Sign In" component={Signin} />
-            <Stack.Screen name = "Sign Up" component = {Signup}/>
+            <Stack.Screen name="Signin" component={Signin} />
+            <Stack.Screen name = "Signup" component = {Signup}/>
         </Stack.Navigator>
         </NavigationContainer>
     )

@@ -11,9 +11,9 @@ If you're having problems, you can tweet to us [@expo](https://twitter.com/expo)
 Snack is Open Source. You can find the code on the [GitHub repo](https://github.com/expo/snack).
 
 
-`npx expo install expo-dev-client`
-`npx expo install  react-native-web@~0.19.6 react-dom@18.2.0 @expo/webpack-config`
-`npm install`
+`npx expo install expo-dev-client`<br>
+`npx expo install  react-native-web@~0.19.6 react-dom@18.2.0 @expo/webpack-config`<br>
+`npm install`<br>
 
 
 node --version 

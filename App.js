@@ -18,6 +18,7 @@ import './config/firebase';
 export default function App() {
   const {user} = userAuthentication();
   global.d = {...user}
+  global.user_validated = false;
   console.log(d['uid'])
  // const {uid , email}  = user;
   //console.log(uid)

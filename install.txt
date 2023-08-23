@@ -1,0 +1,15 @@
+npx expo install expo-dev-client
+npx expo install  react-native-web@~0.19.6 react-dom@18.2.0 @expo/webpack-config
+npm install
+
+
+node --version 
+>=v20.0.0
+
+
+npm --version
+>=9.8.0
+
+
+npx --version
+>=9.8.0

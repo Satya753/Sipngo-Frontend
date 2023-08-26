@@ -49,7 +49,7 @@ export default  function Signup() {
     <View>
        <Text>Sign Up</Text>
 
-      {!!value.error && <View>{value.error}</View>}
+      {!!value.error && <Text>{value.error}</Text>}
 
        <View>
         <Input placeholder = 'Enter your email'
@@ -79,7 +79,7 @@ export default  function Signup() {
       </View>
 
       <View>
-        <Input placeholder = 'Enter your phone no'
+        <Input placeholder = 'Enter your area name'
         value = {value.user_location}
         onChangeText = {(text)=>setValue({...value , user_location:text})}
         />

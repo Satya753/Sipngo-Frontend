@@ -2,12 +2,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import HomeScreen from './HomeScreen'
-import Category from './Category'
-import Evening from './Evening'
-import Morning from './Morning'
 import Checkout from './Checkout';
 import Categories from './Categories';
-import Signin from './Signin';
+
 const Stack = createStackNavigator();
 const AppNavigator = () => {
   return (

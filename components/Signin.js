@@ -40,7 +40,7 @@ export default  function Signin() {
   return (
     <View>
        <Text>Sign In</Text>
-      {!!value.error && <View>{value.error}</View>}
+      {!!value.error && <Text>{value.error}</Text>}
 
        <View>
         <Input placeholder = 'Enter your email'

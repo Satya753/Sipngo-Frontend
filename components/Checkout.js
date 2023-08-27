@@ -10,37 +10,7 @@ import {styled} from 'react-native-tailwindcss'
 import Base64Image from './Base64Image';
 import { useNavigation } from '@react-navigation/native';
 
-const slot = ["Evening" , "Morning"]
-const days = [7 , 14 , 30]
 
-
-const placeOrder = async (cartItem , slot , days)=>{
-    let userId = global.d['uid']
-    console.log(cartItem , slot , days);
-    let postOrder = {};
-    postOrder["user_id"]=userId
-    postOrder["orders"] = []
-    postOrder["slot"] = slot
-    postOrder["days"] = days
-
-    for(const key in cartItem){
-        postOrder["orders"].push([cartItem[key].id , cartItem[key].cnt , cartItem[key].amount])
-    }
-
-    // Make a post request
-
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type':'application/json'
-        },
-        body: JSON.stringify(postOrder)
-    }
-
-    const responseData = await fetch(`${config.flaskapi}/home/add_order`, requestOptions)
-    
-
-}
 const Checkout = ()=>{
     const navigation = useNavigation();
 
@@ -73,9 +43,6 @@ const Checkout = ()=>{
       //  setShowCart(showCart-1);
         setCartItem(curCart);
       }
-    
-    let selectedSlot = null;
-    let selectedDays = null;
       
 
     return(
@@ -106,7 +73,7 @@ const Checkout = ()=>{
       
         <View style ={[t.itemsCenter]}>
     <View style={[t.roundedFull , t.bgBlue700 , t.textWhite]}>
-    <Button onPress = {()=>navigation.navigate('Paymentcheckout' , {items:cartItem})}><Text style={[t.textWhite]}>Place Order and Check Subscription Days</Text></Button>
+    <Button onPress = {()=>navigation.navigate('Paymentcheckout' , {items:cartItem})}><Text style={[t.textWhite]}>Place Order and Select Subscription Days</Text></Button>
     </View>
     </View>
     </View>

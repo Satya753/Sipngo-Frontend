@@ -8,6 +8,8 @@ import config from '../Utils/Config';
 import { ScrollView , TouchableOpacity } from 'react-native-gesture-handler';
 import {styled} from 'react-native-tailwindcss'
 import Base64Image from './Base64Image';
+import { useNavigation } from '@react-navigation/native';
+
 const slot = ["Evening" , "Morning"]
 const days = [7 , 14 , 30]
 
@@ -40,6 +42,7 @@ const placeOrder = async (cartItem , slot , days)=>{
 
 }
 const Checkout = ()=>{
+    const navigation = useNavigation();
 
     const {cartItem , setCartItem} = useContext(GlobalContext);
  //   const {showCart , setShowCart} = useContext(GlobalContext);
@@ -102,35 +105,8 @@ const Checkout = ()=>{
         </ScrollView>
       
         <View style ={[t.itemsCenter]}>
-    <SelectDropdown
-    defaultButtonText='select a Slot'
-	data={slot}
-	onSelect={(selectedItem, index) => {
-        selectedSlot = selectedItem;
-	}}
-	buttonTextAfterSelection={(selectedItem, index) => {
-		return selectedItem
-	}}
-	rowTextForSelection={(item, index) => {
-		return item
-	}}
-    >
-    </SelectDropdown>
-    <SelectDropdown
-    defaultButtonText='Select Subscription'
-	data={days}
-	onSelect={(selectedItem, index) => {
-        selectedDays = selectedItem;
-	}}
-	buttonTextAfterSelection={(selectedItem, index) => {
-		return selectedItem
-	}}
-	rowTextForSelection={(item, index) => {
-		return item
-	}}
-    ></SelectDropdown>
     <View style={[t.roundedFull , t.bgBlue700 , t.textWhite]}>
-    <Button onPress = {()=>placeOrder(cartItem , selectedSlot  , selectedDays)}> <Text style={[t.textWhite]}>Place Order</Text></Button>
+    <Button onPress = {()=>navigation.navigate('Paymentcheckout' , {items:cartItem})}><Text style={[t.textWhite]}>Place Order and Check Subscription Days</Text></Button>
     </View>
     </View>
     </View>

@@ -4,6 +4,7 @@ import React from 'react';
 import HomeScreen from './HomeScreen'
 import Checkout from './Checkout';
 import Categories from './Categories';
+import Paymentcheckout from './Paymentcheckout';
 
 const Stack = createStackNavigator();
 const AppNavigator = () => {
@@ -25,6 +26,9 @@ const AppNavigator = () => {
           component={Checkout}
           >
           </Stack.Screen>
+          <Stack.Screen
+          name = "Paymentcheckout"
+          component = {Paymentcheckout}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

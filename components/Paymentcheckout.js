@@ -62,7 +62,13 @@ const placeOrder = async (cartItem , slot , days)=>{
         body: JSON.stringify(postOrder)
     }
 
+    try{
     const responseData = await fetch(`${config.flaskapi}/home/add_order`, requestOptions)
+        return Promise.resolve(responseData.json())
+    }
+    catch(e){
+        return Promise.reject(e);
+    }
     
 
 }
@@ -85,13 +91,13 @@ const placeOrder = async (cartItem , slot , days)=>{
         <View>
         
             <View>
-            <Dialog.Container visible = {showDialog}>
+            {/* <Dialog.Container visible = {showDialog}>
         <Dialog.Title>Subscription Days less than 30 days</Dialog.Title>
         <Dialog.Description>
             Subscription days is less than 30 days , please have a look into the calendar to go through the days.
             </Dialog.Description>
             <Dialog.Button label="OK" onPress={()=>setShowDialog(false)} />
-        </Dialog.Container>
+        </Dialog.Container> */}
         </View>
         
         <Calendar  onDayPress={(day)=>{console.log('this is the date' ,markedDays[day.dateString] , day.dateString);let marked = {...markedDays}; marked[day.dateString].selected=!marked[day.dateString].selected

@@ -3,8 +3,8 @@ import Constants from 'expo-constants';
 import AppNavigator from './components/AppNavigator';
 import GlobalState from './components/GlobalState';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import userAuthentication from './components/userAuthentication';
-import AuthStack from './components/AuthStack';
+import userAuthentication from './components/Authentication/userAuthentication';
+import AuthStack from './components/Authentication/AuthStack';
 import './config/firebase';
 
 export default function App() {

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { initializeApp } from "firebase/app";
-import '../config/firebase';
-import config from '../Utils/Config';
+import '../../config/firebase';
+import config from '../../Utils/Config';
 import {getAuth , createUserWithEmailAndPassword} from 'firebase/auth';
 const auth  = getAuth();
 export default  function Signup() {

@@ -10,8 +10,10 @@ import Category from './Category';
 import Footer from './Footer';
 import {t} from 'react-native-tailwindcss'
 import GlobalContext from './GlobalContext';
-import Signout from './Signout';
-const HomeScreen = ({navigation}) => {
+import Signout from './Authentication/Signout';
+import { useNavigation } from '@react-navigation/native';
+const HomeScreen = () => {
+  const navigation = useNavigation();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const  {cartItem , setCartItem} = useContext(GlobalContext);
@@ -33,6 +35,7 @@ const HomeScreen = ({navigation}) => {
     <View>
       <View  style = {[ t.pT8 , t.pB8 , t.mBAuto ]}>
         <Signout/>
+        <Button onPress={()=>{navigation.navigate('SubscriptionDetails')}}title='Subscription Details'></Button>
       <ScrollView>
         <FlatList
         data = {data}

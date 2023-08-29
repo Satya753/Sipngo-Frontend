@@ -5,6 +5,7 @@ import HomeScreen from './HomeScreen'
 import Checkout from './Checkout';
 import Categories from './Categories';
 import Paymentcheckout from './Paymentcheckout';
+import SubscriptionDetails from './UserDetails/SubscriptionDetails'
 
 const Stack = createStackNavigator();
 const AppNavigator = () => {
@@ -29,6 +30,9 @@ const AppNavigator = () => {
           <Stack.Screen
           name = "Paymentcheckout"
           component = {Paymentcheckout}></Stack.Screen>
+          <Stack.Screen
+          name = "SubscriptionDetails"
+          component={SubscriptionDetails}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

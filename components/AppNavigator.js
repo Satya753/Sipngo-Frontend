@@ -2,16 +2,21 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import HomeScreen from './HomeScreen'
-import Checkout from './Checkout';
-import Categories from './Categories';
-import Paymentcheckout from './Paymentcheckout';
-import SubscriptionDetails from './UserDetails/SubscriptionDetails'
+import Checkout from './Checkout/Checkout';
+import Categories from './Categories/Categories';
+import Paymentcheckout from './Checkout/Paymentcheckout';
+import SubscriptionDetails from './Subscription/SubscriptionDetails'
+import DrawerNavigator from './DrawerNavigator';
 
 const Stack = createStackNavigator();
 const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen 
+        name = "Drawer"
+        component={DrawerNavigator}
+        />
        <Stack.Screen
           name="Home"
           component={HomeScreen}
@@ -35,6 +40,7 @@ const AppNavigator = () => {
           component={SubscriptionDetails}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
+    
   );
 };
 

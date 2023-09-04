@@ -3,13 +3,14 @@ import { useRoute  } from "@react-navigation/native"
 import { Card } from '@rneui/themed';
 import { Button } from 'react-native-paper';
 import { useContext, useEffect , useState } from 'react';
-import Base64Image from './Base64Image';
-import GlobalContext from './GlobalContext';
-import Cart from './Cart';
+import Base64Image from '../Base64Image';
+import GlobalContext from '../GlobalContext';
+import Cart from '../Cart';
 import { render } from 'react-dom';
 import { t } from 'react-native-tailwindcss';
-import config from '../Utils/Config';
+import config from '../../Utils/Config';
 import Footer from './Footer';
+import styles from '../Styles/categories';
 
 export default function Categories({navigation}){
   
@@ -57,24 +58,34 @@ export default function Categories({navigation}){
   console.log('from categories' , global.d)
   
   return (
-    <View style={[t.hFull]}>
-      <View>
-      </View>
+    <View>
       <ScrollView>
     {data.map(item => (
-    <View style={[t.h90]}>
-     <Card.Title></Card.Title><Card.Divider />
-     <View style={{ position: "relative", alignItems: "center" }}>
+    <View style={styles.container}>
+     <View style={{ position: "relative", alignItems: "center" , flexDirection:'row'}}>
+     <View style = {{flexDirection:'column' , position:'relative' , left:30  , width:153 , padding:3 , margin:3}}>
+        <Text style = {{fontWeight:400 , fontSize:17}}>{item[1]}</Text>
+        <Text style = {styles.itemtext}><Text>{'\u20B9'}</Text>{item[0]}</Text>
+        </View>
+        <View style = {{flexDirection:'column' , position:'relative' , left:90 , top:12}}>
         <Base64Image base64String={item[2]} />  
-      <Text>{item[0]}</Text>
-      <Text>{item[1]}</Text>
-      <Button onPress={()=>addToCart(item[0] , item[1] , item[3] , item[2])}>Add</Button>
-      {cartItem[item[1]]?.cnt>=1?<Button style={[t.p2]} onPress = {()=>removeFromCart(item[0] , item[1])}>Remove</Button>:null}
+     
+      {
+      cartItem[item[1]]?.cnt?<View style = {styles.buttonViewStyle}>
+                <Button onPress = {()=>removeFromCart(item[0] , item[1])}><Text style={[t.textWhite , t.fontExtrabold	]}>-</Text></Button>
+                <View style={[t.justifyCenter]}><Text  style={[t.textWhite , t.fontExtrabold	]}>{cartItem[item[1]]?.cnt}</Text></View>
+                <Button onPress={()=>addToCart(item[0] , item[1] , item[3] , item[2])}><Text  style={[t.textWhite , t.fontExtrabold	]}>+</Text></Button>
+      </View>:<Button style = {styles.addbutton}  onPress={()=>addToCart(item[0] , item[1] , item[3] , item[2])}><Text style = {styles.buttonText}>ADD</Text></Button>
+    }
+      </View>
       </View> 
+
       </View>
     ))}
     </ScrollView>
+    <View>
     {Object.keys(cartItem).length>=1 ? <Footer/> : null}
+    </View >
     </View>
      
   )

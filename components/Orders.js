@@ -5,7 +5,7 @@ import { useEffect , useState } from 'react';
 import Cart from './Cart';
 import config from '../Utils/Config';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import Category from './Category';
+import Category from './Categories/Category';
 
 
 const Orders = ()=>{

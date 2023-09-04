@@ -6,8 +6,8 @@ import Cart from './Cart';
 import config from '../Utils/Config';
 //let [categories , setCategories] = useState(null)
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import Category from './Category';
-import Footer from './Footer';
+import Category from './Categories/Category';
+import Footer from './Categories/Footer';
 import {t} from 'react-native-tailwindcss'
 import GlobalContext from './GlobalContext';
 import Signout from './Authentication/Signout';
@@ -34,8 +34,6 @@ const HomeScreen = () => {
   return (
     <View>
       <View  style = {[ t.pT8 , t.pB8 , t.mBAuto ]}>
-        <Signout/>
-        <Button onPress={()=>{navigation.navigate('SubscriptionDetails')}}title='Subscription Details'></Button>
       <ScrollView>
         <FlatList
         data = {data}

@@ -5,10 +5,16 @@ const styles = StyleSheet.create({
         backgroundColor:"white"
     },
     container:{
-        width : "100%",
-        padding:20,
-        top:280,
-        backgroundColor:"white"
+        shadowRadius:6, 
+        shadowOpacity:4, 
+        shadowOffset:{ width: 1, height:2 },
+        borderRadius:4,
+        backgroundColor: 'white',
+        padding:3,
+        margin:5, 
+        height:150 , 
+        width:400,
+        left:10
         },
     button : {
         backgroundColor: "orange",
@@ -19,10 +25,9 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     buttonText:{
-        textAlign: "center",
-        fontSize: 15,
-        letterSpacing: 1,
-        fontWeight: 'bold'
+        fontWeight: 'bold' ,
+        fontSize: 11,
+        color:'black'
         // fontFamily: "Poppins-Regular"
     },
     headerWrapper:{
@@ -57,6 +62,30 @@ const styles = StyleSheet.create({
     },
     scrollview:{
         height:110,
+    },
+
+    categories:{
+        borderRadius:2,
+        height:360,
+    },
+    itemtext:{
+        fontWeight:'bold',
+        fontSize:18 ,
+        top:34
+    } ,
+    buttonViewStyle:{
+        flexDirection:'row',
+        backgroundColor:'green',
+        borderRadius:8,
+        margin:4
+    } , 
+    addbutton : {
+        backgroundColor: "orange",
+        height: 30,
+        width: 90,
+        margin: 15,
+        borderRadius: 10 , 
+        left:8
     }
 
 })

@@ -6,7 +6,12 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import userAuthentication from './components/Authentication/userAuthentication';
 import AuthStack from './components/Authentication/AuthStack';
 import './config/firebase';
+import DrawerNavigator from './components/DrawerNavigator';
 
+
+function Root(){
+  return (<DrawerNavigator/>);
+}
 export default function App() {
   const {user} = userAuthentication();
   global.d = {...user}

@@ -1,13 +1,15 @@
 import { Text, View, StyleSheet, Image , FlatList } from 'react-native';
 import { Button , Card} from 'react-native-paper';
 import { useContext, useEffect , useState } from 'react';
-import GlobalContext from './GlobalContext';
+import GlobalContext from '../GlobalContext';
 import SelectDropdown from 'react-native-select-dropdown';
 import {t} from 'react-native-tailwindcss'
-import config from '../Utils/Config';
+import config from '../../Utils/Config';
 import { ScrollView , TouchableOpacity } from 'react-native-gesture-handler';
 import {styled} from 'react-native-tailwindcss'
-import Base64Image from './Base64Image';
+import Base64Image from '../Base64Image';
+import Styles  from '../Styles/payments';
+
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -71,10 +73,18 @@ const Checkout = ()=>{
         ))}
         </ScrollView>
       
-        <View style ={[t.itemsCenter]}>
-    <View style={[t.roundedFull , t.bgBlue700 , t.textWhite]}>
+        <View style ={Styles.buttonView}>
+        <TouchableOpacity 
+          style = {Styles.button} 
+          onPress={()=>navigation.navigate('Paymentcheckout' , {items:cartItem})}>
+            <Text style={Styles.buttonText}>
+            Select Subscription Days
+            </Text>
+        </TouchableOpacity>
+
+    {/* <View style={[t.roundedFull , t.bgBlue700 , t.textWhite]}>
     <Button onPress = {()=>navigation.navigate('Paymentcheckout' , {items:cartItem})}><Text style={[t.textWhite]}>Place Order and Select Subscription Days</Text></Button>
-    </View>
+    </View> */}
     </View>
     </View>
     )

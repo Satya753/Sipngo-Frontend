@@ -4,7 +4,7 @@ import {t} from 'react-native-tailwindcss'
 
 const Base64Image   = ({base64String}) =>{
      var base64Icon = 'data:image/png;base64,' + base64String;
-   return <Image style = {[t.h40,t.w40,t.borderR5]} source = {{uri:base64Icon}} alt="Base 64 image"/>
+   return <Image style = {{height:80 , width:80 , left:26}} source = {{uri:base64Icon}} alt="Base 64 image"/>
 };
 
 

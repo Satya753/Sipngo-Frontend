@@ -16,6 +16,9 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import {t} from 'react-native-tailwindcss'
 
 import { RadioGroup } from 'react-native-radio-buttons-group';
+import {RadioButton} from 'react-native-paper'
+import Morning from './Morning';
+import styles from '../Styles/checkout';
 
 
 
@@ -149,11 +152,21 @@ const placeOrder = async (Items , slot , days)=>{
         }}
         >
         </SelectDropdown> */}
-        <RadioGroup 
-        radioButtons={slotRadioButtonGroup}
-        onPresss = {setSlot}
-        selectedId={slot}
-        />
+        <View style = {styles.radionButtongroup}>
+            <View style = {styles.radiobuttonview}>
+            <Text style = {styles.radioText}>Morning</Text><RadioButton value  = "Morning"
+            label = "Morning"
+            status={slot==='Morning'?'checked':'unchecked'}
+            onPress={()=>setSlot('Morning')} 
+            ></RadioButton>
+            </View>
+            <View style = {styles.radiobuttonview}>
+            <Text style = {styles.radioText} >Evening</Text><RadioButton value = "Evening"
+            status = {slot=='Evening'?'checked':'unchecked'}
+            onPress={()=>setSlot('Evening')}
+            ></RadioButton>
+            </View>
+        </View>
         </View>
     <View style = {Styles.buttonView}>
     <TouchableOpacity 

@@ -17,7 +17,7 @@ const Cart = ()=>{
                 <Text style={[t.fontSemibold]}>{Object.keys(cartItem).length} ITEM</Text>
             </View>
             <View style = {[t.p3 , t.right10 , t.textWhite , t.roundedFull]}>
-                <Button style = {[t.bgGreen600 , t.w40  , t.right10 , t.textWhite  , t.roundedLg]}onPress={()=>navigation.navigate('Checkout')}><Text style={[t.textWhite]}>Next</Text></Button>
+                <Button style = {[t.bgGreen600 , t.w40  , t.h10, t.right10 , t.textWhite  , t.roundedLg]}onPress={()=>navigation.navigate('Checkout')}><Text style={[t.textWhite]}>Next</Text></Button>
             </View>
     </View>
     )

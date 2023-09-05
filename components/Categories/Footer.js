@@ -6,9 +6,7 @@ import { NativeBaseProvider, Box, Heading, VStack, FormControl, Input, Link, But
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 const Footer = ()=>{
     return (
-        <View style = {t.h49}>
             <Cart/>
-        </View>
     )
 }
 

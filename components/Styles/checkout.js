@@ -90,8 +90,24 @@ const styles = StyleSheet.create({
     footerCategores:{
         top:12,
         left:12
+    },
+    radiobuttonview:{
+        flexDirection:'row'
+    } ,
+    radioText:{
+        textAlign:'center',
+        top:6
+    },
+    radionButtongroup:{
+        left:43,
+        top:9,
+        flexDirection:'row'
+    } ,
+    buttonView:{
+        backgroundColor:"white",
+        height:90 ,
+        top:90
     }
-
 })
 
 export default styles;

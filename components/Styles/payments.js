@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
 
     scrollview:{
         padding:20,
-        height: 300,
+        height: 200,
         margin:20,
     },
     singleitem:{

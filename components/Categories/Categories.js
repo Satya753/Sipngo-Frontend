@@ -59,7 +59,7 @@ export default function Categories({navigation}){
   
   return (
     <View>
-      <ScrollView>
+      <ScrollView style = {{height:720}}>
     {data.map(item => (
     <View style={styles.container}>
      <View style={{ position: "relative", alignItems: "center" , flexDirection:'row'}}>
@@ -84,8 +84,8 @@ export default function Categories({navigation}){
     ))}
     </ScrollView>
     <View>
-    {Object.keys(cartItem).length>=1 ? <Footer/> : null}
-    </View >
+      <View>{Object.keys(cartItem).length>=1 ? <Footer/> : null}</View>
+  </View>
     </View>
      
   )

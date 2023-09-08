@@ -1,62 +1,84 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-    common:{
-        backgroundColor:"white"
+    main: {
+        flex: 1,
+        marginTop: 20,
+        alignSelf: "center",
+        height:"100%",
+        backgroundColor: "white"
     },
-    container:{
-        width : "100%",
-        padding:20,
-        top:280,
-        backgroundColor:"white"
-        },
-    button : {
-        backgroundColor: "orange",
-        height: 40,
-        width: 350,
-        padding: 10,
-        margin: 15,
-        borderRadius: 10
+    imageContainer:{
+        margin: 15
     },
-    buttonText:{
+    formContainer:{
+        marginTop : 15
+    },
+    header:{
         textAlign: "center",
-        fontSize: 15,
-        letterSpacing: 1,
-        fontWeight: 'bold'
-        // fontFamily: "Poppins-Regular"
+        fontSize: 35,
+        letterSpacing: 4,
+        fontWeight: "bold",
+        color: '#ffa31a'
     },
-    headerWrapper:{
-        height: 100,
-        width:"100%",
-    },
-    headerText:{
-        fontSize:38,
-        letterSpacing:1.5,
-        textAlign: "center"
-    },
-    form:{
-        marginTop : 2,
-    },
-    login:{
-        height:52,
-        top:285,
-        backgroundColor:"white"
-        
-    },
-    credinput:{
-        borderRadius:10,
-        height:45,
-        padding:13
+    imageWrapper:{
     },
     image:{
-        height:110,
-        width:350,
-        top:150,
-        left:45 , 
-        backgroundColor:"white"
+        height: 150,
+        width: "100%"
     },
-    scrollview:{
-        height:110,
+    formWrapper:{
+        width: "100%",
+    },  
+    form:{
+        width: "90%",
+        height: 220,
+        borderColor: "black",
+        margin: 18,
+        padding : 10
+    },
+    inputWrapper:{
+        flexDirection: "row",
+        alignItems: "center",
+        flexWrap:"wrap",
+        marginTop: 15,
+        borderBottomWidth: 2,
+        borderColor:'#663d00'
+    },
+    credInput:{
+        padding: 2,
+        marginTop: 18,
+        width: "90%",
+        letterSpacing: 1,
+        color: "#ffa31a",
+        fontSize: 18
+    },
+    button:{
+        marginTop: 28,
+        padding: 8,
+        width: "40%",
+        alignSelf:'center',
+        borderRadius: 5,
+        backgroundColor:"#ffa31a",
+        borderColor:'#663d00'
+    },
+    buttonText:{
+        textAlign: 'center',
+        letterSpacing: 2,
+        fontSize: 24,
+        color:'#fff',
+        fontWeight:"500"
+    },
+    orWrapper:{
+        // height: 400,
+        marginVertical: 50
+    },
+    orWrapperText:{
+        textAlign: "center",
+        letterSpacing: 1.5,
+        color:"#ffa31a",
+        fontWeight:"600",
+        fontSize: 16
     }
 
 })

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { Input, Button } from 'react-native-elements';
-import { initializeApp } from "firebase/app";
 import '../../config/firebase';
 import config from '../../Utils/Config';
 import {getAuth , createUserWithEmailAndPassword} from 'firebase/auth';
 const auth  = getAuth();
-export default  function Signup() {
+
+export default function Signup() {
 
   const [value , setValue] = useState({email:'' , password:'' , error:''});
 
@@ -54,10 +54,7 @@ export default  function Signup() {
        <View>
         <Input placeholder = 'Enter your email'
         value = {value.email}
-        onChangeText = {(text)=>setValue({...value , email:text})}
-
-      >
-      </Input>
+        onChangeText = {(text)=>setValue({...value , email:text})} />
       </View> 
        <View>
         <Input placeholder = 'Enter your password'

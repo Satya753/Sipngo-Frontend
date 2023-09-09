@@ -7,7 +7,7 @@ import userAuthentication from './components/Authentication/userAuthentication';
 import AuthStack from './components/Authentication/AuthStack';
 import './config/firebase';
 import DrawerNavigator from './components/DrawerNavigator';
-
+import { RootSiblingParent } from 'react-native-root-siblings';
 
 function Root(){
   return (<DrawerNavigator/>);
@@ -19,13 +19,15 @@ export default function App() {
   console.log(d['uid'])
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <GlobalState>
-          {user ? <AppNavigator/>:<AuthStack/>}
-        </GlobalState>
-      </View>
-    </GestureHandlerRootView>
+    <RootSiblingParent>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <View style={styles.container}>
+          <GlobalState>
+            {user ? <AppNavigator/>:<AuthStack/>}
+          </GlobalState>
+        </View>
+      </GestureHandlerRootView>
+    </RootSiblingParent>
 
   );
 }

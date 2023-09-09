@@ -17,7 +17,13 @@ export default function AuthStack(){
                     title:"",
                     headerShown: false
                 }}/> */}
-            <Stack.Screen name="Signin"   component={Signin} />
+            <Stack.Screen 
+                name="Signin"   
+                component={Signin} 
+                options={{
+                    title: "",
+                    headerShown: false
+                }}/>
             <Stack.Screen name = "Signup" component = {Signup}/>
         </Stack.Navigator>
         </NavigationContainer>

@@ -12,6 +12,7 @@ import {t} from 'react-native-tailwindcss'
 import GlobalContext from './GlobalContext';
 import Signout from './Authentication/Signout';
 import { useNavigation } from '@react-navigation/native';
+import Location from './UserDetails/Location';
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [data, setData] = useState([]);
@@ -33,6 +34,7 @@ const HomeScreen = () => {
   //console.log(JSON.stringify(categories))
   return (
     <View>
+        <Location/>
       <View  style = {[ t.pT8 , t.pB8 , t.mBAuto ]}>
       <ScrollView>
         <FlatList

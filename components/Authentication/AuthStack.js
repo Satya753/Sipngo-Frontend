@@ -1,7 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import Signin from "./Signin";
 import { createStackNavigator } from "@react-navigation/stack";
-import Welcomesipngo from '../Welcome/Welcomesipngo';
 import Signup from './Signup'
 const Stack = createStackNavigator();
 
@@ -24,7 +23,13 @@ export default function AuthStack(){
                     title: "",
                     headerShown: false
                 }}/>
-            <Stack.Screen name = "Signup" component = {Signup}/>
+            <Stack.Screen 
+                name = "Signup" 
+                component = {Signup}
+                options={{
+                    title: "",
+                    headerShown: false
+                }}/>
         </Stack.Navigator>
         </NavigationContainer>
     )

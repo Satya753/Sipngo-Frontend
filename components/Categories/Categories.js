@@ -24,6 +24,7 @@ export default function Categories({navigation}){
     //id = 12
     const resp = await fetch(`${config.flaskapi}/home/category?id=${id}`).then(res => res.json()); 
     setData(resp);
+    console.log(resp);
     setLoading(false);
   };
   //console.log(fetchCategory(route.params.titleId))
@@ -56,7 +57,8 @@ export default function Categories({navigation}){
   }
 
   console.log('from categories' , global.d)
-  
+  // #res.append([item.price , item.name ,byteimg.getBase64() , item.id])
+  // 0 - price , 1- name , 2 - img , 3 - id
   return (
     <View>
       <ScrollView style = {{height:720}}>
@@ -64,18 +66,18 @@ export default function Categories({navigation}){
     <View style={styles.container}>
      <View style={{ position: "relative", alignItems: "center" , flexDirection:'row'}}>
      <View style = {{flexDirection:'column' , position:'relative' , left:30  , width:153 , padding:3 , margin:3}}>
-        <Text style = {{fontWeight:400 , fontSize:17}}>{item[1]}</Text>
-        <Text style = {styles.itemtext}><Text>{'\u20B9'}</Text>{item[0]}</Text>
+        <Text style = {{fontWeight:400 , fontSize:17}}>{item.name}</Text>
+        <Text style = {styles.itemtext}><Text>{'\u20B9'}</Text>{item.price}</Text>
         </View>
         <View style = {{flexDirection:'column' , position:'relative' , left:90 , top:12}}>
-        <Base64Image base64String={item[2]} />  
+        <Base64Image base64String={item.img} />  
      
       {
-      cartItem[item[1]]?.cnt?<View style = {styles.buttonViewStyle}>
-                <Button onPress = {()=>removeFromCart(item[0] , item[1])}><Text style={[t.textWhite , t.fontExtrabold	]}>-</Text></Button>
-                <View style={[t.justifyCenter]}><Text  style={[t.textWhite , t.fontExtrabold	]}>{cartItem[item[1]]?.cnt}</Text></View>
-                <Button onPress={()=>addToCart(item[0] , item[1] , item[3] , item[2])}><Text  style={[t.textWhite , t.fontExtrabold	]}>+</Text></Button>
-      </View>:<Button style = {styles.addbutton}  onPress={()=>addToCart(item[0] , item[1] , item[3] , item[2])}><Text style = {styles.buttonText}>ADD</Text></Button>
+      cartItem[item.name]?.cnt?<View style = {styles.buttonViewStyle}>
+                <Button onPress = {()=>removeFromCart(item.price , item.name)}><Text style={[t.textWhite , t.fontExtrabold	]}>-</Text></Button>
+                <View style={[t.justifyCenter]}><Text  style={[t.textWhite , t.fontExtrabold	]}>{cartItem[item.name]?.cnt}</Text></View>
+                <Button onPress={()=>addToCart(item.price , item.name , item.id, item.img)}><Text  style={[t.textWhite , t.fontExtrabold	]}>+</Text></Button>
+      </View>:<Button style = {styles.addbutton}  onPress={()=>addToCart(item.price , item.name , item.id , item.img)}><Text style = {styles.buttonText}>ADD</Text></Button>
     }
       </View>
       </View> 

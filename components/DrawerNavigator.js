@@ -8,7 +8,7 @@ import Paymentcheckout from './Checkout/Paymentcheckout';
 import SubscriptionDetails from './Subscription/SubscriptionDetails'
 import Signout from './Authentication/Signout';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-
+import Location from './UserDetails/Location'
 const Drawer = createDrawerNavigator()
 const  DrawerNavigator = () => {
   return (
@@ -16,6 +16,7 @@ const  DrawerNavigator = () => {
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="SubscriptionDetails" component={SubscriptionDetails} />
         <Drawer.Screen name = "Signout" component = {Signout}/>
+        <Drawer.Screen name = "Location" component = {Location}/>
       </Drawer.Navigator>
   );
 };

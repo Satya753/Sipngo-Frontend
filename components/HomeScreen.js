@@ -33,7 +33,6 @@ const HomeScreen = () => {
   //console.log(JSON.stringify(categories))
   return (
     <View>
-        <Location/>
       <View  style = {[ t.pT8 , t.pB8 , t.mBAuto ]}>
       <ScrollView>
         <FlatList

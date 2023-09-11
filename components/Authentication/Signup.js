@@ -27,7 +27,7 @@ export default function Signup() {
           body: JSON.stringify({
               user_email:value.email,
               user_id:authData.user.uid,
-              user_location:value.user_location,
+              user_location:'-',
               user_name:value.user_name
           })
       };

@@ -17,6 +17,8 @@ export default function App() {
       }
 
       let location = await Location.getCurrentPositionAsync({});
+     // let postalAddress = await fetch(`${config.flaskapi}/home/userLocation/?lat=location.coords.latitude`)
+      console.log(JSON.stringify(location) , ' this is the location')
       setLocation(location);
     })();
   }, []);

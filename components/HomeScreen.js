@@ -18,7 +18,6 @@ const HomeScreen = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const  {cartItem , setCartItem} = useContext(GlobalContext);
-
   const fetchCategory = async () => {
     const resp = await fetch(`${config.flaskapi}/home`); 
     const data = await resp.json();
@@ -40,7 +39,7 @@ const HomeScreen = () => {
         <FlatList
         data = {data}
         numColumns={2}
-        renderItem={({item}) =>  <Category Name={item[0]} Value={item[0]} Id={item[1]} Image = {item[2]}></Category>}>
+        renderItem={({item}) =>  <Category Name={item.name} Value={item.name} Id={item.id} Image = {item.img}></Category>}>
     </FlatList>
     </ScrollView>
     </View>

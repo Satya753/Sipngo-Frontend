@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
         marginTop: 18,
         width: "90%",
         letterSpacing: 1,
-        color: "#ffa31a",
         fontSize: 18
     },
     button:{

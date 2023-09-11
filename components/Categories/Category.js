@@ -1,22 +1,19 @@
 import { Text, View, StyleSheet, Image,ScrollView , TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Base64Image from '../Base64Image';
-import {t} from 'react-native-tailwindcss'
-import { SafeAreaView } from 'react-native';
-import { Card } from 'react-native-paper';
-import styles from '../Styles/categories';
+import styles from '../Styles/CategoryStyles.js';
 
 
 export default function Category({Name ,  Value , Id , Image}){
   const navigation = useNavigation();
   return (
-    <TouchableOpacity  onPress={()=>navigation.navigate('Categories' , {titleName:Name , titleValue :Value  , titleId: Id , image: Image})}>
-      <Card style = {[]}>
-    <View style={styles.innerContainer}>
-    <Base64Image base64String={Image} />  
-      <Text style={styles.text}>{Name}</Text>
-    </View>
-    </Card>
-  </TouchableOpacity>
+    <TouchableOpacity style={styles.cardContainer} onPress={()=>navigation.navigate('Categories' , {titleName:Name , titleValue :Value  , titleId: Id , image: Image})}>
+        <View style={styles.innerContainer}>
+          <View style={styles.productImage}>
+            <Base64Image base64String={Image}/>  
+          </View>
+          <Text style={styles.productName}>{Name}</Text>
+        </View>
+    </TouchableOpacity>
   )
-}
+};

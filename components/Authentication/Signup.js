@@ -14,8 +14,8 @@ const auth  = getAuth();
 
 export default function Signup() {
 
-  const [value , setValue] = useState({email:'' , password:'', user_name:'', phone_no:'' , error:''});
-  const [ inputBorderColor, setInputBorderColor] = useState({email: false, password:false, user_name: false, phone_no: false});
+  const [value , setValue] = useState({email:'' , password:'', user_name:'', phone_no:'' , error:'', user_location:'-'});
+  const [ inputBorderColor, setInputBorderColor] = useState({email: false, password:false, user_name: false, phone_no: false, user_location:false});
   async function doSignup(){
 
     if(value.email == ''){
@@ -139,14 +139,16 @@ export default function Signup() {
             style={styles.input}/>
         </View>
 
-        {/* <View style={styles.inputWrapper}>
+        <View style={{...styles.inputWrapper, borderColor: inputBorderColor.user_location ? '#ffa31a' : 'transparent'}}>
           <MaterialIcons name="location-on" style={styles.icon} size={24} />
           <TextInput 
-          placeholder = '*Location'
-          value = {value.user_location}
-          onChangeText = {(text)=>setValue({...value , user_location:text})}
-          style={styles.input}/>
-        </View> */}
+            placeholder = '*Location'
+            value = {value.user_location}
+            onChangeText = {(text)=>setValue({...value , user_location:text})}
+            onFocus={() => onFocusHandler('user_location')}
+            onBlur={() => onBlurHandler('user_location')}
+            style={styles.input}/>
+        </View>
 
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button} onPress = {doSignup}>

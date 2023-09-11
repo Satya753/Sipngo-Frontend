@@ -5,14 +5,15 @@ import { useContext, useEffect , useState } from 'react';
 import Cart from './Cart';
 import config from '../Utils/Config';
 //let [categories , setCategories] = useState(null)
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Category from './Categories/Category';
 import Footer from './Categories/Footer';
 import {t} from 'react-native-tailwindcss'
 import GlobalContext from './GlobalContext';
-import Signout from './Authentication/Signout';
 import { useNavigation } from '@react-navigation/native';
 import Location from './UserDetails/Location';
+import styles from './Styles/HomeScreenStyles';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [data, setData] = useState([]);
@@ -30,20 +31,20 @@ const HomeScreen = () => {
   //   <Text>{item[0]}</Text>
 
   useEffect(fetchCategory , []);
-  //console.log(JSON.stringify(categories))
   return (
-    <View>
-      <View  style = {[ t.pT8 , t.pB8 , t.mBAuto ]}>
-      <ScrollView>
-        <FlatList
-        data = {data}
-        numColumns={2}
-        renderItem={({item}) =>  <Category Name={item.name} Value={item.name} Id={item.id} Image = {item.img}></Category>}>
-    </FlatList>
-    </ScrollView>
-    </View>
+    <SafeAreaView>
+      <Location/>
+      <View style={styles.listContainer}>
+        {/* <ScrollView> */}
+          <FlatList
+            data = {data}
+            numColumns={2}
+            renderItem={({item}) =>  <Category Name={item.name} Value={item.name} Id={item.id} Image = {item.img}></Category>}>
+          </FlatList>
+        {/* </ScrollView> */}
+      </View>
     {Object.keys(cartItem).length>=1 ? <Footer/> : null}
-    </View>
+    </SafeAreaView>
     
   );
 };

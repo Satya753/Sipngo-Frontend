@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Image  , FlatList , TextInput} from 'react-native';
+import { Text, View, Image , TextInput  } from 'react-native';
 import { useContext, useEffect , useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import '../../config/firebase';
@@ -9,6 +9,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons'; 
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Toast from 'react-native-root-toast';
+import showErrorToast from '../../Utils/ErrorHandlerPopup';
 const auth  = getAuth();
 
 export default  function Signin() {
@@ -17,40 +18,8 @@ export default  function Signin() {
   const navigation = useNavigation();
   const [value , setValue] = useState({email:'' , password:'' , error:''});
 
-  //Showing Error Message when either email or password field is empty 
-  const showErrorToast = () => {
-    let toast = Toast.show(value.error, {
-      duration: Toast.durations.LONG,
-      position: Toast.positions.BOTTOM,
-      shadow: true,
-      animation: true,
-      hideOnPress: true,
-      delay: 0,
-      backgroundColor: "#ff0000",
-      onShow: () => {
-          // calls on toast\`s appear animation start
-      },
-      onShown: () => {
-          // calls on toast\`s appear animation end.
-      },
-      onHide: () => {
-          // calls on toast\`s hide animation start.
-      },
-      onHidden: () => {
-          // calls on toast\`s hide animation end.
-      }
-    }); 
-  
-    // You can manually hide the Toast, or it will automatically disappear after a `duration` ms timeout.
-    setTimeout(function () {
-        Toast.hide(toast);
-    }, 5000);
-  }
-
   useEffect(() => {
-    if(value.error != ''){
-      showErrorToast();
-    }
+    if(value.error != '')showErrorToast(value.error);
   },[value.error]);
 
   async function doSignIn(){
@@ -122,6 +91,7 @@ export default  function Signin() {
                 onChangeText = {(text)=>setValue({...value , password:text})}
                 secureTextEntry = {true}/>
             </View>
+
             <TouchableOpacity 
                 style = {Styles.button} 
                 onPress={() => doSignIn()}>

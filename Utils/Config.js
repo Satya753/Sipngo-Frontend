@@ -1,7 +1,5 @@
 const config = {
-    flaskapi:'http://192.168.1.110:5000'
+    flaskapi:'http://93.188.165.63:8000'
   };
 
   export default config;
-
-

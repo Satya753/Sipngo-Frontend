@@ -14,30 +14,29 @@ const AppNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen 
-        name = "Drawer"
-        component={DrawerNavigator}
-        />
+          name = "Drawer"
+          component={DrawerNavigator}
+          options={{
+            title: "",
+            headerShown: false
+          }} />
        <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{title: 'Shop by Category'}}
-        />
+          options={{title: 'Shop by Category'}} />
         <Stack.Screen
           name = "Categories"
           component = {Categories}
-          options={({ route }) => ({ title: route.params.titleValue})}
-          />
-          <Stack.Screen 
+          options={({ route }) => ({ title: route.params.titleValue})}/>
+        <Stack.Screen 
           name = "Checkout"
-          component={Checkout}
-          >
-          </Stack.Screen>
-          <Stack.Screen
+          component={Checkout}/>
+        <Stack.Screen
           name = "Paymentcheckout"
-          component = {Paymentcheckout}></Stack.Screen>
-          <Stack.Screen
+          component = {Paymentcheckout} />
+        <Stack.Screen
           name = "SubscriptionDetails"
-          component={SubscriptionDetails}></Stack.Screen>
+          component={SubscriptionDetails} />
       </Stack.Navigator>
     </NavigationContainer>
     

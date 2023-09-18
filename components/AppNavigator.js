@@ -27,7 +27,10 @@ const AppNavigator = () => {
         <Stack.Screen
           name = "Categories"
           component = {Categories}
-          options={({ route }) => ({ title: route.params.titleValue})}/>
+          options={({ route }) => ({ 
+            title: route.params.titleValue,
+            headerShown : false
+            })}/>
         <Stack.Screen 
           name = "Checkout"
           component={Checkout}/>

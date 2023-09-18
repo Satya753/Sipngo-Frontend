@@ -1,97 +1,76 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-    common:{
-        backgroundColor:"white"
-    },
-    container:{
-        shadowRadius:6, 
-        shadowOpacity:4, 
-        shadowOffset:{ width: 1, height:2 },
-        borderRadius:4,
-        backgroundColor: 'white',
-        padding:3,
-        margin:5, 
-        height:150 , 
-        width:400,
-        left:10
-        },
-    button : {
-        backgroundColor: "orange",
-        height: 40,
-        width: 350,
-        padding: 10,
-        margin: 15,
-        borderRadius: 10
-    },
-    buttonText:{
-        fontWeight: 'bold' ,
-        fontSize: 11,
-        color:'black'
-        // fontFamily: "Poppins-Regular"
+    main:{
+        backgroundColor : "white",
+        flex : 1
     },
     headerWrapper:{
-        height: 100,
-        width:"100%",
+        width : "100%",
+        padding: 20,
+        marginBottom: 10,
+        // backgroundColor : '#ffd1b3'
     },
     headerText:{
-        fontSize:38,
-        letterSpacing:1.5,
-        textAlign: "center"
+        alignSelf: 'center',
+        fontSize : 30,
+        letterSpacing : 2,    
+        fontWeight: "600"
     },
-    form:{
-        marginTop : 2,
+    scrollViewContainer :{
+        flex: 1
     },
-    login:{
-        height:52,
-        top:285,
-        backgroundColor:"white"
-        
+    card:{
+        width : "95%",
+        marginHorizontal: 9,
+        flexDirection: 'row',
+        marginVertical: 30,
     },
-    credinput:{
-        borderRadius:10,
-        height:45,
-        padding:13
+    cardText:{
+        width: '60%',
+        padding:10
     },
-    image:{
-        height:110,
-        width:350,
-        top:150,
-        left:45 , 
-        backgroundColor:"white"
+    cardText_name:{
+        letterSpacing: 1.2,
+        fontWeight: '400',
+        fontSize: 20
     },
-    scrollview:{
-        height:110,
+    cardText_price:{
+        marginTop: 10
     },
-
-    categories:{
-        borderRadius:2,
-        height:360,
+    cardImage:{
+        width: '40%',
+        position: 'relative'
     },
-    itemtext:{
-        fontWeight:'bold',
-        fontSize:18 ,
-        top:34
-    } ,
-    buttonViewStyle:{
-        flexDirection:'row',
-        backgroundColor:'green',
-        borderRadius:8,
-        margin:4
-    } , 
-    addbutton : {
-        backgroundColor: "orange",
-        height: 30,
-        width: 90,
-        margin: 15,
-        borderRadius: 10 , 
-        left:8
+    countContainer:{
+        backgroundColor: '#ffd1b3',
+        borderColor: '#cc5200',
+        borderWidth : 1,
+        flexDirection: 'row',
+        width: '70%',
+        alignSelf:"center",
+        position: 'absolute',
+        bottom: -25,
+        padding: 5,
+        borderRadius: 10,
     },
-    footerCategores:{
-        top:12,
-        left:12
+    button_decrease:{
+        width: '33%',
+    },
+    countText:{
+        width: '33%',
+    },
+    button_increase:{
+        width: '33%',
+    },
+    button_text:{
+        textAlign:"center",
+        color: '#cc5200',
+        width: '100%',
+        textAlign:'center',
+        fontSize: 18,
+        fontWeight: '600'
     }
-
 })
 
 export default styles;

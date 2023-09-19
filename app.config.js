@@ -46,7 +46,17 @@ export default  {
           "locationAlwaysAndWhenInUsePermission":"Allow Sipngo to Use your location"
         }
       ]
-    ],
-    "assets": ['./assets/fonts']
+    ]
+    ,
+    "android": {
+      "package": "com.sipngo.sipngofrontend",
+      "versionCode": 1
+    },
+     "extra": {
+      "eas": {
+        "projectId": "fb5f5c7a-e365-48ce-a998-52a98267b410"
+      }
+    }
+
   }
 }

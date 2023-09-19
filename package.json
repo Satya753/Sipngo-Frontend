@@ -46,7 +46,6 @@
     "react-native-screens": "~3.22.0",
     "react-native-select-dropdown": "^3.3.4",
     "react-native-tailwindcss": "^1.1.11",
-    "react-native-toast-native": "^1.2.1",
     "react-native-web": "~0.19.6",
     "typescript": "^5.1.3"
   },

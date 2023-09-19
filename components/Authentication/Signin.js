@@ -8,7 +8,6 @@ import Styles from '../Styles/signinstyles'
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { Entypo } from '@expo/vector-icons'; 
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Toast from 'react-native-root-toast';
 import showErrorToast from '../../Utils/ErrorHandlerPopup';
 const auth  = getAuth();
 

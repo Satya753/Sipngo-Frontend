@@ -7,7 +7,9 @@ import styles from '../Styles/CategoryStyles.js';
 export default function Category({Name ,  Value , Id , Image}){
   const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.cardContainer} onPress={()=>navigation.navigate('Categories' , {titleName:Name , titleValue :Value  , titleId: Id , image: Image})}>
+    <TouchableOpacity 
+      style={styles.cardContainer} 
+      onPress={()=>navigation.navigate('Categories' , {titleName:Name , titleValue :Value  , titleId: Id , image: Image})}>
         <View style={styles.innerContainer}>
           <View style={styles.productImage}>
             <Base64Image base64String={Image}/>  

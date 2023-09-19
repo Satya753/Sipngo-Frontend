@@ -1,23 +1,35 @@
-import { Text, View, StyleSheet, Image  , FlatList } from 'react-native';
+import { Text, View, StyleSheet, Image  , FlatList, TouchableOpacity } from 'react-native';
 import { Button , Card} from 'react-native-paper';
 import { useContext, useEffect , useState } from 'react';
 import GlobalContext from './GlobalContext';
 import { useNavigation } from '@react-navigation/native';
-import {t , tw} from 'react-native-tailwindcss';
-
-
-
-
+import { AntDesign } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
+import styles from './Styles/CartStyles';
 const Cart = ()=>{
-    const {cartItem , setCartItem} = useContext(GlobalContext);
+    const {cartItem } = useContext(GlobalContext);
+    const [totalAmount, setTotalAmount] = useState(0);
+
     const navigation = useNavigation();
+
+    useEffect( ()=> {
+        let amountArray = Object.keys(cartItem).map( item => (cartItem[item].amount));
+        let total = amountArray.reduce((totalValue, currentValue)=> currentValue+totalValue , 0);
+        setTotalAmount(total);
+    },[cartItem]);
+
     return(
-    <View style  = {[t.h13, t.bgWhite  , t.justifyEvenly ,t.flexRow ,t.p5]}>
-            <View style = {[t.p6]}>
-                <Text style={[t.fontSemibold]}>{Object.keys(cartItem).length} ITEM</Text>
+    <View style={styles.main}>
+            <View style = {styles.cartText_wrapper}>
+                <Feather name="shopping-bag" size={24} color="white" />
+                <Text style={styles.cartText_text}>{Object.keys(cartItem).length} Item </Text>
             </View>
-            <View style = {[t.p3 , t.right10 , t.textWhite , t.roundedFull]}>
-                <Button style = {[t.bgGreen600 , t.w40  , t.h10, t.right10 , t.textWhite  , t.roundedLg]}onPress={()=>navigation.navigate('Checkout')}><Text style={[t.textWhite]}>Next</Text></Button>
+            <View style = {styles.cartButton_wrapper}>
+                <TouchableOpacity style={styles.cartButton_button}onPress={()=>navigation.navigate('Checkout')}>
+                    <AntDesign name="shoppingcart" size={24} color="white" />
+                    <Text style={styles.cartButton_buttonText}>View Cart</Text>
+                    <Text style={styles.cartText_text}>{'\u20B9'}{totalAmount}</Text>
+                </TouchableOpacity>
             </View>
     </View>
     )

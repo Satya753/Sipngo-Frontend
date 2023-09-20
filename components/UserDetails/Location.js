@@ -17,6 +17,21 @@ export default function App() {
       }
 
       let location = await Location.getCurrentPositionAsync({});
+
+      let userId= global.d['uid']
+      const locationbody = {
+        user_id: userId,
+        coords:JSON.stringify(location)
+      }
+      const requestOptions={
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(locationbody)
+      }
+
+      console.log(JSON.stringify(location) , ' this is the location')
       setLocation(location);
     })();
   }, []);

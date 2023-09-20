@@ -1,10 +1,17 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-    common:{
-        backgroundColor:"white"
-    },
-
+    header:{
+        textAlign: 'center',
+        fontSize : 25,
+        fontWeight : "600",
+        letterSpacing: 2,
+        marginVertical : 20
+    },  
+    calenderWrapper:{
+        margin: 10,
+        borderRadius : 10
+    },  
     scrollview:{
         padding:20,
         height: 200,
@@ -16,30 +23,53 @@ const styles = StyleSheet.create({
         textAlign:"center"
     },
     button : {
-        backgroundColor: "orange",
-        height: 40,
-        width: 250,
-        padding: 10,
-        margin: 24,
-        borderRadius: 10,
-        left:130
+        backgroundColor: "#cc5200",
+        borderRadius : 10,
+        margin : 15
     },
     buttonText:{
         textAlign: "center",
-        fontSize: 15,
+        fontSize: 20,
         letterSpacing: 1,
-        fontWeight: 'bold'
-        // fontFamily: "Poppins-Regular"
-    },
-    slot:{
-        left:80 , 
-    },
-    dropdownslot:{
-        backgroundColor: "#FFEA00" ,
+        fontWeight: 'bold',
+        padding : 10,
+        color : '#fff'
     },
     buttonView:{
-        backgroundColor:"white",
-        height:90
+        flexDirection : 'row',
+        justifyContent:'space-between',
+        top : 70
+    },
+    slotContainer : {
+        backgroundColor : '#fff',
+        borderRadius : 10,
+        marginVertical : 20,
+        marginHorizontal : 10,
+        padding : 10
+    },
+    radionButtongroup:{
+        flexDirection:'row',
+        alignSelf : 'center',
+    },
+    radiobuttonview:{
+        flexDirection:'row',
+        padding : 10,
+        alignItems : 'center',
+    } ,
+    radioText:{
+        textAlign:'center',
+        fontSize : 18,
+        letterSpacing : 2
+    },
+    amountWrapper : {
+        flexDirection : 'row',
+        justifyContent : 'space-around',
+        margin: 10
+    },
+    amount_text : {
+        fontSize : 16,
+        letterSpacing : 1.5,
+        fontWeight : '600'
     }
 })
 

@@ -7,17 +7,9 @@ import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import styles from './Styles/CartStyles';
 const Cart = ()=>{
-    const {cartItem } = useContext(GlobalContext);
-    const [totalAmount, setTotalAmount] = useState(0);
-
+    const {cartItem, totalAmount } = useContext(GlobalContext);
     const navigation = useNavigation();
-
-    useEffect( ()=> {
-        let amountArray = Object.keys(cartItem).map( item => (cartItem[item].amount));
-        let total = amountArray.reduce((totalValue, currentValue)=> currentValue+totalValue , 0);
-        setTotalAmount(total);
-    },[cartItem]);
-
+    
     return(
     <View style={styles.main}>
             <View style = {styles.cartText_wrapper}>

@@ -91,22 +91,26 @@ const styles = StyleSheet.create({
         top:12,
         left:12
     },
+    radionButtongroup:{
+        flexDirection:'row',
+        alignSelf : 'center',
+        marginVertical : 20,
+        backgroundColor : '#fff',
+        borderRadius : 10,
+        paddingHorizontal : 40
+    },
     radiobuttonview:{
-        flexDirection:'row'
+        flexDirection:'row',
+        padding : 10,
+        alignItems : 'center',
     } ,
     radioText:{
         textAlign:'center',
-        top:6
+        fontSize : 18,
+        letterSpacing : 2
     },
-    radionButtongroup:{
-        left:43,
-        top:9,
-        flexDirection:'row'
-    } ,
     buttonView:{
         backgroundColor:"white",
-        height:90 ,
-        top:90
     }
 })
 

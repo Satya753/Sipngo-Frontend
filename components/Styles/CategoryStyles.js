@@ -6,6 +6,8 @@ const styles = StyleSheet.create({
         margin: 6,
         paddingBottom: 2,
         lineHeight: '0%',
+        borderRadius : 10,
+        backgroundColor : '#fff'
     },
     innerContainer:{
         width : '100%',

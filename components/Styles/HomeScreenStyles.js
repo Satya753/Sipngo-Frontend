@@ -6,9 +6,9 @@ const styles = StyleSheet.create({
         height : "100%"
     },
     listContainer : {
+        flex : 1,
         height: '100%',
         margin : 4,
-        backgroundColor: 'white'
     }
 })
 

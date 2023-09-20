@@ -1,10 +1,7 @@
-import { Text, View } from 'react-native';
-import { Button , Card} from 'react-native-paper';
-import { useContext, useEffect , useState } from 'react';
+import { Text, View, TouchableOpacity } from 'react-native';
+import { useContext, } from 'react';
 import GlobalContext from '../GlobalContext';
-import {t} from 'react-native-tailwindcss'
-import { ScrollView , TouchableOpacity } from 'react-native-gesture-handler';
-import Base64Image from '../Base64Image';
+import { ScrollView } from 'react-native-gesture-handler';
 import styles  from '../Styles/CheckoutStyles';
 
 import { useNavigation } from '@react-navigation/native';
@@ -12,8 +9,8 @@ import { useNavigation } from '@react-navigation/native';
 
 const Checkout = ()=>{
     const navigation = useNavigation();
-    const {cartItem , setCartItem} = useContext(GlobalContext);
-
+    const {cartItem , setCartItem, totalAmount} = useContext(GlobalContext);
+    
     const addToCart = (amount , name) =>{
         const curCart = {...cartItem};
         if (name in curCart){
@@ -35,49 +32,54 @@ const Checkout = ()=>{
     //  setShowCart(showCart-1);
       setCartItem(curCart);
     }
-    
 
     return(
     <View style={styles.main}>
+        <Text style={styles.header}>ITEMS ADDED</Text>
         <ScrollView style = {styles.scrollViewContainer}>
           {Object.keys(cartItem).map((key ,id)=>(
-            <View style={styles.card} key={id}>
-              <View style = {[t.m4 , t.flexCol]}>
-                <View>
-                  <Base64Image base64String={cartItem[key].image}/>
-                </View>
-                <View style={[t.justifyCenter]}>
-                  <Text>{key}</Text>
-                </View>
+            <View style={styles.item} key={id}>
+              <View style = {styles.itemName_wrapper}>
+                  <Text style={styles.itemName}>{key}</Text>
+                  <Text style={styles.itemCost}>₹{cartItem[key].amount}</Text>
               </View>
-              <View style={styles.countControlContainer}>
-                <View style = {[t.flexRow , t.bgGreen600 , t.roundedFull]}>
-                  <Button onPress = {()=>removeFromCart(cartItem[key].amount , key)}>
-                    <Text style={[t.textWhite , t.fontExtrabold	]}>-</Text>
-                  </Button>
-                  <View style={[t.justifyCenter]}>
-                    <Text  style={[t.textWhite , t.fontExtrabold	]}>{cartItem[key].cnt}</Text>
+              <View style={styles.itemCountContainer}>
+                <View style = {styles.itemCountControl}>
+                  <TouchableOpacity style={styles.itemCount_decrease} onPress = {()=>removeFromCart(cartItem[key].amount , key)}>
+                    <Text style={styles.itemCountControl_text}>-</Text>
+                  </TouchableOpacity>
+                  <View>
+                    <Text style={styles.itemCount_text}>{cartItem[key].cnt}</Text>
                   </View>
-                  <Button onPress={()=>addToCart(cartItem[key].amount , key)}>
-                    <Text  style={[t.textWhite , t.fontExtrabold	]}>+</Text>
-                  </Button>
+                  <TouchableOpacity style={styles.itemCount_increase} onPress={()=>addToCart(cartItem[key].amount , key)}>
+                    <Text  style={styles.itemCountControl_text}>+</Text>
+                  </TouchableOpacity>
                 </View>
-                <View style =  {[t.flexRow , t.justifyCenter]}>
-                  <Text>Amount   </Text>
-                  <Text>{cartItem[key].amount*cartItem[key].cnt}</Text>
+                <View>
+                  <Text style={styles.itemCount_amountText}>₹{cartItem[key].amount*cartItem[key].cnt}</Text>
                 </View>
               </View>
             </View>
         ))}
         </ScrollView>
-      
-        <View style ={styles.buttonView}>
+        <View style={styles.billContainer}>
+          <Text style={styles.header}>BILL SUMMARY</Text>
+          <View style={styles.bill_body}>
+            <Text style={styles.billText}>Net Payable </Text>
+            <Text style={styles.billText_amount}>₹{totalAmount}</Text>
+          </View>
+        </View>
+        <View style ={styles.footer}>
           <TouchableOpacity 
-            style = {styles.button} 
+            style = {styles.footer_button} 
             onPress={()=>navigation.navigate('Paymentcheckout' , {items:cartItem})}>
-              <Text style={styles.buttonText}>
+              <Text style={styles.footer_buttonText}>
                 Select Subscription Days
               </Text>
+              <View>
+                <Text style={styles.footer_totalAmount}>₹{totalAmount}</Text>
+                <Text style={styles.footer_totalText} >TOTAL</Text>
+              </View>
           </TouchableOpacity>
         </View>
     </View>

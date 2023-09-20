@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import React , {useState} from 'react';
-import {Button , View , FlatList , Text} from 'react-native';
 import config from '../../Utils/Config'
 import SingleDay from "./SingleDay";
+import { ScrollView } from "react-native-gesture-handler";
+
 const SubscriptionDetails = ()=>{
     const [subData , setSubData]=useState({});
     let userId = global.d['uid'];
@@ -12,24 +13,20 @@ const SubscriptionDetails = ()=>{
         setSubData(cur);
   //      console.log(subData , cur)
     }
+
     useEffect(()=>{
         fetchSubscription(userId)
     } , [])
 
     let subscription = []
-
-    // for (sub in subData){
-    //     console.log(sub);
-    // }
     for (const key in subData){
-        console.log(subData[key])
-        subscription.push(<SingleDay day = {subData[key].order_date} status = {subData[key].status}></SingleDay>)
+        subscription.push(<SingleDay key={key} day={subData[key].order_date} status = {subData[key].status}/>)
     }
+
     return (
-        <View>
-            <Text>Subscription Details</Text>
+        <ScrollView style={{flex: 1}}>
             {subscription}
-        </View>
+        </ScrollView>
     )
 
 }

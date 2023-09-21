@@ -1,37 +1,25 @@
-import { Text, View, StyleSheet, Image,ScrollView } from 'react-native';
-import { useRoute  } from "@react-navigation/native"
-import { Card } from '@rneui/themed';
-import { Button } from 'react-native-paper';
+import { Text, View,ScrollView } from 'react-native';
+import { useNavigation, useRoute  } from "@react-navigation/native"
 import { useContext, useEffect , useState , useMemo } from 'react';
-import SelectDropdown from 'react-native-select-dropdown';
 import config from '../../Utils/Config';
 import { Calendar } from 'react-native-calendars';
 import moment from 'moment';
 import GlobalContext from '../GlobalContext';
-import Dialog from "react-native-dialog";
 import ConfirmItem from './ConfirmItem';
-import Styles  from '../Styles/payments';
+import styles  from '../Styles/payments';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-//import Styles from '../Styles/signinstyles'
-import {t} from 'react-native-tailwindcss'
 
-import { RadioGroup } from 'react-native-radio-buttons-group';
 import {RadioButton} from 'react-native-paper'
-import Morning from './Morning';
-import styles from '../Styles/checkout';
-
-
 
 const Paymentcheckout = ()=>{
     const route = useRoute();
     const Items = route.params?.items;
     let selectedSlot = null;
-    console.log(markedDays);
     const [markedDays , setMarkedDays] = useState([])
     const [showDialog , setShowDialog] = useState(false)
-    const {cartItem , setCartItem} = useContext(GlobalContext);
-    const {showCart , setShowCart} = useContext(GlobalContext);
+    const {cartItem , setCartItem, setShowCart, totalAmount}  = useContext(GlobalContext);
     const [slot , setSlot] = useState();
+    const navigation = useNavigation();
 
     const slotRadioButtonGroup = useMemo(()=>([{
         id:'1',
@@ -52,10 +40,7 @@ const placeOrder = async (Items , slot , days)=>{
             daytoSend.push(key)
     }
 
-    console.log('these are the days' , slot);
-
     if (daytoSend.length<30){
-        console.log('Less than 30 days' , daytoSend)
         setShowDialog(true);
         return ;
     }
@@ -71,7 +56,6 @@ const placeOrder = async (Items , slot , days)=>{
     }
     postOrder["total_amount"] = tot*30;
 
-    console.log(postOrder , 'payload sent')
 
     // Make a post request
 
@@ -86,8 +70,6 @@ const placeOrder = async (Items , slot , days)=>{
     try{
     const responseData = await fetch(`${config.flaskapi}/home/add_order`, requestOptions)
         const data = await responseData.json();
-        console.log(data[1] , ' this is response from payment')
-
         if (data[1]==200){
             setCartItem({})
             setShowCart(0);
@@ -116,68 +98,61 @@ const placeOrder = async (Items , slot , days)=>{
         }
         setMarkedDays(marked);
     } , [])
-    console.log(slot , 'this is the slot change')
+
     return (
-        <View>
-        
-            <View>
-            {/* <Dialog.Container visible = {showDialog}>
-        <Dialog.Title>Subscription Days less than 30 days</Dialog.Title>
-        <Dialog.Description>
-            Subscription days is less than 30 days , please have a look into the calendar to go through the days.
-            </Dialog.Description>
-            <Dialog.Button label="OK" onPress={()=>setShowDialog(false)} />
-        </Dialog.Container> */}
-        </View>
-        
-        <Calendar  onDayPress={(day)=>{console.log('this is the date' ,markedDays[day.dateString] , day.dateString);let marked = {...markedDays}; marked[day.dateString].selected=!marked[day.dateString].selected
-        setMarkedDays(marked);
-        }} markedDates={markedDays}/>
-
-        <ScrollView style = {Styles.scrollview} >
-            {renderCartItem}
-        </ScrollView>
-        <View style = {Styles.slot}>
-        {/* <SelectDropdown style = {Styles.dropdownslot}
-        defaultButtonText={<>Select Slot</>}
-        data={slot}
-        onSelect={(selectedItem, index) => {
-            selectedSlot = selectedItem;
-        }}
-        buttonTextAfterSelection={(selectedItem, index) => {
-            return selectedItem
-        }}
-        rowTextForSelection={(item, index) => {
-            return item
-        }}
-        >
-        </SelectDropdown> */}
-        <View style = {styles.radionButtongroup}>
-            <View style = {styles.radiobuttonview}>
-            <Text style = {styles.radioText}>Morning</Text><RadioButton value  = "Morning"
-            label = "Morning"
-            status={slot==='Morning'?'checked':'unchecked'}
-            onPress={()=>setSlot('Morning')} 
-            ></RadioButton>
+        <View style={{flex : 1}}>
+            <Text style={styles.header}>Payment Checkout</Text>
+            <View style = {styles.calenderWrapper}>
+                <Calendar 
+                style={{borderRadius:10, padding: 5}}
+                    onDayPress={(day)=>{
+                        console.log('this is the date' ,markedDays[day.dateString] , day.dateString);
+                        let marked = {...markedDays}; 
+                        marked[day.dateString].selected=!marked[day.dateString].selected;
+                        setMarkedDays(marked);
+                    }} 
+                    markedDates={markedDays}/>
             </View>
-            <View style = {styles.radiobuttonview}>
-            <Text style = {styles.radioText} >Evening</Text><RadioButton value = "Evening"
-            status = {slot=='Evening'?'checked':'unchecked'}
-            onPress={()=>setSlot('Evening')}
-            ></RadioButton>
+            <View style={styles.slotContainer}>
+                <Text style={styles.radioText}>Select Slot </Text>
+                <View style = {styles.radionButtongroup}>
+                    <View style = {styles.radiobuttonview}>
+                        <Text style = {styles.radioText}>Morning</Text>
+                        <RadioButton 
+                            value  = "Morning"
+                            label = "Morning"
+                            status={slot==='Morning'?'checked':'unchecked'}
+                            onPress={()=>setSlot('Morning')} >
+                            </RadioButton>
+                    </View>
+                    <View style = {styles.radiobuttonview}>
+                    <Text style = {styles.radioText} >Evening</Text>
+                        <RadioButton 
+                            value = "Evening"
+                            status = {slot=='Evening'?'checked':'unchecked'}
+                            onPress={()=>setSlot('Evening')}>
+                        </RadioButton>
+                    </View>
+                </View>
             </View>
-        </View>
-        </View>
-    <View style = {Styles.buttonView}>
-    <TouchableOpacity 
-          style = {Styles.button} 
-          onPress={()=>placeOrder(Items , selectedSlot ,  markedDays)}>
-            <Text style={Styles.buttonText}>
-              Procced to  Pay
-            </Text>
-        </TouchableOpacity>
-
-    </View>
+            <View style={styles.amountWrapper}>
+                <Text style={styles.amount_text}>Total Payable Amount </Text>
+                <Text style={styles.amount_text}>₹{totalAmount}</Text>
+            </View>
+            <View style = {styles.buttonView}>
+                <TouchableOpacity 
+                    style={styles.button}
+                    onPress={()=>navigation.navigate('Checkout')}>
+                    <Text style={styles.buttonText}>
+                        Back to {'\n'} Items
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity 
+                    style = {styles.button} 
+                    onPress={()=>placeOrder(Items , selectedSlot ,  markedDays)}>
+                        <Text style={styles.buttonText}>Procced to {'\n'} Pay</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }

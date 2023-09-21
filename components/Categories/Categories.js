@@ -25,7 +25,6 @@ export default function Categories(){
     //id = 12
     const resp = await fetch(`${config.flaskapi}/home/category?id=${id}`).then(res => res.json()); 
     setData(resp);
-    console.log(resp);
     setLoading(false);
   };
   //console.log(fetchCategory(route.params.titleId))
@@ -55,9 +54,6 @@ export default function Categories(){
     setCartItem(curCart);
   }
 
-  // console.log('from categories' , global.d)
-  // #res.append([item.price , item.name ,byteimg.getBase64() , item.id])
-  // 0 - price , 1- name , 2 - img , 3 - id
   return (
     <View style={styles.main}>
       <View style={styles.headerWrapper}>

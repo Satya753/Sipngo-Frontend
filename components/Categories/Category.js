@@ -3,7 +3,6 @@ import { useNavigation } from '@react-navigation/native';
 import Base64Image from '../Base64Image';
 import styles from '../Styles/CategoryStyles.js';
 
-
 export default function Category({Name ,  Value , Id , Image}){
   const navigation = useNavigation();
   return (

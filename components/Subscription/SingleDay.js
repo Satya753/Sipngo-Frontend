@@ -1,23 +1,17 @@
 import { useEffect } from "react";
 import React , {useState} from 'react';
-import {Button , View , FlatList , Text} from 'react-native';
-import {  Card} from 'react-native-paper';
+import {Button , View , FlatList } from 'react-native';
+import {Card, Text} from 'react-native-paper';
 import styles from "../Styles/substyles";
-
-import config from '../../Utils/Config'
-
 
 const SingleDay = (props)=>{
     return (
-        <View style = {styles.container}>
-            <Card>
-                <Card.Title heading= {props.day}/>
-                <Card.Content>
-                     <Text>Date {props.day}</Text>
-                    <Text>Status {props.status}</Text>
-                </Card.Content>
-            </Card>
-        </View>
+        <Card Type="elevated" style={{borderWidth :1, marginVertical : 5, marginHorizontal: 10 }}>
+            <Card.Title title= {props.day} style={styles.card_title}/>
+            <Card.Content style={styles.card_contentWrapper}>
+                <Text style={styles.card_contentText}>Status {props.status}</Text>
+            </Card.Content>
+        </Card>
     )
 }
 

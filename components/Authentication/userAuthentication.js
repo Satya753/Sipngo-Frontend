@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {getAuth , onAuthStateChanged , User} from 'firebase/auth';
 import {initializeApp} from 'firebase/app';
@@ -17,19 +16,19 @@ initializeApp(firebaseConfig);
 const auth = getAuth();
 export default function userAuthentication(){
 
-    const [user , setUser] = React.useState(User);
+    const [user , setUser] = React.useState("");
 
     React.useEffect( ()=>{
-        const unsubscribeFromAuth = onAuthStateChanged(auth , (user)=>{
+        onAuthStateChanged(auth , (user)=>{
             if (user){
                 setUser(user);
             }
             else{
-                setUser(undefined);
+                setUser("");
             }
-        });
-        return unsubscribeFromAuth;
-    }  , []);
+        })
+        
+    }, []);
 
     return {user};
 }

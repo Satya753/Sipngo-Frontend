@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Pressable } from 'react-native';
-import { Input, Button } from 'react-native-elements';
+import { View, Text, TextInput } from 'react-native';
 import '../../config/firebase';
 import config from '../../Utils/Config';
 import {getAuth , createUserWithEmailAndPassword} from 'firebase/auth';
-import { Entypo, MaterialIcons, FontAwesome } from '@expo/vector-icons'; 
+import { Entypo, MaterialIcons } from '@expo/vector-icons'; 
 import styles from '../Styles/signUpStyles';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TouchableOpacity } from 'react-native-gesture-handler';

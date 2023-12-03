@@ -1,11 +1,5 @@
-import { Text, View, StyleSheet, Image  , FlatList } from 'react-native';
-import { Card  } from 'react-native-paper';
-import { useContext, useEffect , useState } from 'react';
-import GlobalContext from '../GlobalContext';
-import { Input, Button } from 'react-native-elements';
-import { useNavigation } from '@react-navigation/native';
-import {t , tw} from 'react-native-tailwindcss';
-import { initializeApp } from "firebase/app";
+import { Text, View} from 'react-native';
+import { Button } from 'react-native-elements';
 import '../../config/firebase';
 import {getAuth , signOut} from 'firebase/auth';
 const auth  = getAuth();

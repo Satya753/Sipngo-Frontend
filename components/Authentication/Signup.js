@@ -46,7 +46,6 @@ export default function Signup() {
       return Promise.resolve(responsedata);
     }
     catch(error){
-        console.log(error.message);
         switch (error.message) {
           case "Firebase: Error (auth/invalid-email).":
             setValue({...value, error: "Invalid Email"});

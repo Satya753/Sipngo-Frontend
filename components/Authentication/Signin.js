@@ -1,14 +1,14 @@
 import { Text, View, Image , TextInput  } from 'react-native';
-import { useContext, useEffect , useState } from 'react';
+import { useEffect , useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import '../../config/firebase';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import {getAuth , signInWithEmailAndPassword} from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword} from 'firebase/auth';
 import Styles from '../Styles/signinstyles'
-import { MaterialIcons } from '@expo/vector-icons'; 
-import { Entypo } from '@expo/vector-icons'; 
+import { MaterialIcons,Entypo } from '@expo/vector-icons'; 
 import { SafeAreaView } from 'react-native-safe-area-context';
 import showErrorToast from '../../Utils/ErrorHandlerPopup';
+
+import '../../config/firebase';
 const auth  = getAuth();
 
 export default  function Signin() {

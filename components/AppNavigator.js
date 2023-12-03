@@ -1,12 +1,15 @@
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import React from 'react';
+
 import HomeScreen from './HomeScreen'
 import Checkout from './Checkout/Checkout';
 import Categories from './Categories/Categories';
 import Paymentcheckout from './Checkout/Paymentcheckout';
 import SubscriptionDetails from './Subscription/SubscriptionDetails'
 import DrawerNavigator from './DrawerNavigator';
+import { OrderSummary } from './OrderSummary/OrderSummary';
+import Payment from './Payment/Payment';
 
 const Stack = createStackNavigator();
 const AppNavigator = () => {
@@ -55,6 +58,18 @@ const AppNavigator = () => {
           component={SubscriptionDetails}
           options={{
             title:"Subscription Details"
+          }} />
+        <Stack.Screen
+          name = "OrderSummary"
+          component={OrderSummary}
+          options={{
+            title:"Order Summary"
+          }} />
+        <Stack.Screen
+          name = "Payment"
+          component={Payment}
+          options={{
+            title:"Payments"
           }} />
       </Stack.Navigator>
     </NavigationContainer>

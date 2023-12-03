@@ -72,9 +72,9 @@ const Checkout = ()=>{
         <View style ={styles.footer}>
           <TouchableOpacity 
             style = {styles.footer_button} 
-            onPress={()=>navigation.navigate('Paymentcheckout' , {items:cartItem})}>
+            onPress={()=>navigation.navigate('OrderSummary')}>
               <Text style={styles.footer_buttonText}>
-                Select Subscription Days
+                Checkout
               </Text>
               <View>
                 <Text style={styles.footer_totalAmount}>₹{totalAmount}</Text>

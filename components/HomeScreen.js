@@ -10,12 +10,14 @@ import styles from './Styles/HomeScreenStyles';
 const HomeScreen = () => {
   const [data, setData] = useState([]);
   const {cartItem , setCartItem} = useContext(GlobalContext);
-  const fetchCategory = async () => {
-    const resp = await fetch(`${config.flaskapi}/home`); 
-    const data = await resp.json();
-    console.log(data)
-    setData(data);
-    setLoading(false);
+
+  const fetchCategory = () => {
+    fetch(`${config.flaskapi}/home`)
+      .then(res => res.json() )
+      .then(res => {
+        setData(res);
+        // setLoading(false);
+      }); 
   };
 
   useEffect( () => fetchCategory() ,[] )
@@ -27,7 +29,12 @@ const HomeScreen = () => {
         <FlatList
           data = {data}
           numColumns={2}
-          renderItem={({item}) =>  <Category Name={item.name} Value={item.name} Id={item.id} Image = {item.img}></Category>}>
+          renderItem={({item}) =>  <Category 
+                                      Name={item.name} 
+                                      Value={item.name} 
+                                      Id={item.id} 
+                                      Image={item.img}> 
+                                    </Category>}>
         </FlatList>
       </View>
       {Object.keys(cartItem).length>=1 ? <Footer/> : null}

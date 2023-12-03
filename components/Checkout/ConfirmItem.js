@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import React , {useState} from 'react';
 import {Button , View , FlatList , Text} from 'react-native';
 import {  Card} from 'react-native-paper';

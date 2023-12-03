@@ -9,28 +9,28 @@ export default function AuthStack(){
     return (
         <NavigationContainer>
             <Stack.Navigator>
-            {/* <Stack.Screen 
-                name = "Welcome Sipngo" 
-                component={Welcomesipngo}
-                options={{
-                    title:"",
-                    headerShown: false
-                }}/> */}
-            <Stack.Screen 
-                name="Signin"   
-                component={Signin} 
-                options={{
-                    title: "",
-                    headerShown: false
-                }}/>
-            <Stack.Screen 
-                name = "Signup" 
-                component = {Signup}
-                options={{
-                    title: "",
-                    headerShown: false
-                }}/>
-        </Stack.Navigator>
+                {/* <Stack.Screen 
+                    name = "Welcome Sipngo" 
+                    component={Welcomesipngo}
+                    options={{
+                        title:"",
+                        headerShown: false
+                    }}/> */}
+                <Stack.Screen 
+                    name="Signin"   
+                    component={Signin} 
+                    options={{
+                        title: "",
+                        headerShown: false
+                    }}/>
+                <Stack.Screen 
+                    name = "Signup" 
+                    component = {Signup}
+                    options={{
+                        title: "",
+                        headerShown: false
+                    }}/>
+            </Stack.Navigator>
         </NavigationContainer>
     )
 

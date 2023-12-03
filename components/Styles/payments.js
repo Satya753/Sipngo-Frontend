@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     buttonView:{
         flexDirection : 'row',
         justifyContent:'space-between',
-        top : 70
+        top : 10
     },
     slotContainer : {
         backgroundColor : '#fff',
@@ -60,16 +60,6 @@ const styles = StyleSheet.create({
         textAlign:'center',
         fontSize : 18,
         letterSpacing : 2
-    },
-    amountWrapper : {
-        flexDirection : 'row',
-        justifyContent : 'space-around',
-        margin: 10
-    },
-    amount_text : {
-        fontSize : 16,
-        letterSpacing : 1.5,
-        fontWeight : '600'
     }
 })
 

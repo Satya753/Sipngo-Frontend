@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, TextInput } from 'react-native';
 import '../../config/firebase';
 import config from '../../Utils/Config';
@@ -8,6 +8,7 @@ import styles from '../Styles/signUpStyles';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import showErrorToast from '../../Utils/ErrorHandlerPopup';
+import GlobalContext from '../GlobalContext';
 
 const auth  = getAuth();
 
@@ -15,6 +16,7 @@ export default function Signup() {
 
   const [value , setValue] = useState({email:'' , password:'', user_name:'', phone_no:'' , error:'', user_location:'-'});
   const [ inputBorderColor, setInputBorderColor] = useState({email: false, password:false, user_name: false, phone_no: false, user_location:false});
+  
   async function doSignup(){
 
     if(value.email == ''){
@@ -38,7 +40,8 @@ export default function Signup() {
           body: JSON.stringify({
               user_email:value.email,
               user_id:authData.user.uid,
-              user_location:'-',
+              user_phoneNo: value.phone_no,
+              user_location: value.user_location,
               user_name:value.user_name
           })
       };
@@ -105,6 +108,7 @@ export default function Signup() {
           <Entypo name="lock" style={styles.icon} size={24} color="black" />
           <TextInput 
             placeholder = '*Password'
+            placeholderTextColor="grey" 
             value = {value.password}
             onChangeText = {(text)=>setValue({...value , password:text})}
             onFocus={() => onFocusHandler('password')}
@@ -117,6 +121,7 @@ export default function Signup() {
           <Entypo name="user" style={styles.icon} size={24}  />
           <TextInput 
             placeholder = '*Name'
+            placeholderTextColor="grey" 
             value = {value.user_name}
             onChangeText = {(text)=>setValue({...value , user_name:text})}
             onFocus={() => onFocusHandler('user_name')}
@@ -128,6 +133,7 @@ export default function Signup() {
         <Entypo name="phone" style={styles.icon} size={24} />
           <TextInput 
             placeholder = '*Phone'
+            placeholderTextColor="grey" 
             keyboardType='phone-pad'
             inputMode='numeric'
             value = {value.phone_no}
@@ -141,6 +147,7 @@ export default function Signup() {
           <MaterialIcons name="location-on" style={styles.icon} size={24} />
           <TextInput 
             placeholder = '*Location'
+            placeholderTextColor="grey" 
             value = {value.user_location}
             onChangeText = {(text)=>setValue({...value , user_location:text})}
             onFocus={() => onFocusHandler('user_location')}

@@ -4,11 +4,33 @@ import style from './styles'
 import GlobalContext from '../GlobalContext'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
+import config from '../../Utils/Config';
+import * as Linking from 'expo-linking';
 
 export const OrderSummary = () => {
   
   const navigation = useNavigation();
   const {cartItem, totalAmount} = useContext(GlobalContext);
+
+  const OnPlaceOrderPressHandler = () => {
+    
+    const options = {
+      method: "POST",
+      headers : {
+        "Content-Type" : "application/json"
+      },
+      body: JSON.stringify({
+        "user_id" : global.d['uid'],
+        "amount" : totalAmount
+      })
+    }
+
+    fetch(`${config.flaskapi}/home/payment`, options)
+    .then(response => response.json())
+    .then(res => res.data.instrumentResponse.redirectInfo.url)
+    .then(link => Linking.openURL(link))
+  }
+
   return (
     <View style={style.main}>
       <ScrollView>
@@ -63,7 +85,7 @@ export const OrderSummary = () => {
           <View>
             <TouchableOpacity 
               style={style.footerBtn}
-              onPress={()=> navigation.navigate('Payment')}>
+              onPress={OnPlaceOrderPressHandler}>
               <Text style={style.footerBtn_text}>Place Order</Text>
             </TouchableOpacity>
           </View>

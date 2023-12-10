@@ -17,7 +17,7 @@ const GlobalState = ({children}) =>{
             value = {{
                 cartItem , setCartItem , 
                 showCart , setShowCart,
-                totalAmount
+                totalAmount, setTotalAmount,
                 }}>
             {children}
         </GlobalContext.Provider>

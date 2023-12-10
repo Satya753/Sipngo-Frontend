@@ -3,7 +3,8 @@
       "preview": {
         "android": {
           "buildType": "apk"
-        }
+        },
+        "withoutCredentials":true
       },
       "preview2": {
         "android": {

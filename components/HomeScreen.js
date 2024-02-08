@@ -4,7 +4,6 @@ import config from '../Utils/Config';
 import Category from './Categories/Category';
 import Footer from './Categories/Footer';
 import GlobalContext from './GlobalContext';
-import Location from './UserDetails/Location';
 import styles from './Styles/HomeScreenStyles';
 
 const HomeScreen = () => {
@@ -24,7 +23,6 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.main}>
-      <Location/>
       <View style={styles.listContainer}>
         <FlatList
           data = {data}

@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Image,ScrollView , TouchableOpacity} from 'react-native';
+import { Text, View, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Base64Image from '../Base64Image';
 import styles from '../Styles/CategoryStyles.js';

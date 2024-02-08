@@ -2,8 +2,8 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import { useContext } from 'react';
 import GlobalContext from './GlobalContext';
 import { useNavigation } from '@react-navigation/native';
-import { AntDesign } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons';
+import { AntDesign, Feather } from '@expo/vector-icons';
+
 import styles from './Styles/CartStyles';
 
 const Cart = ()=>{

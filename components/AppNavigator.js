@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+import * as Linking from 'expo-linking';
 
 import HomeScreen from './HomeScreen'
 import Checkout from './Checkout/Checkout';
@@ -10,11 +11,25 @@ import SubscriptionDetails from './Subscription/SubscriptionDetails'
 import DrawerNavigator from './DrawerNavigator';
 import { OrderSummary } from './OrderSummary/OrderSummary';
 import Payment from './Payment/Payment';
+import Profile from './Profile/Profile';
+
+const prefix = Linking.createURL('/')
 
 const Stack = createStackNavigator();
 const AppNavigator = () => {
+
+  const linking = {
+    prefixes : [prefix],
+    config : {
+      screens: {
+        Home : "home",
+        Profile : "profile"
+      }
+    }
+  }
+
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={linking}>
       <Stack.Navigator>
         <Stack.Screen 
           name = "Drawer"
@@ -23,7 +38,7 @@ const AppNavigator = () => {
             title: "",
             headerShown: false
           }} />
-       <Stack.Screen
+        <Stack.Screen
           name="Home"
           component={HomeScreen}
           options={{
@@ -70,6 +85,12 @@ const AppNavigator = () => {
           component={Payment}
           options={{
             title:"Payments"
+          }} />
+        <Stack.Screen
+          name = "Profile"
+          component={Profile}
+          options={{
+            title:"Profile"
           }} />
       </Stack.Navigator>
     </NavigationContainer>

@@ -35,6 +35,10 @@ const style = StyleSheet.create({
     addressInfo:{
         width: "100%"
     },
+    changeBtnWrapper:{
+        width: '25%',
+        marginTop: 10
+    },
     subscriptionWrapper:{
         backgroundColor: '#fff',
         padding: 15,
@@ -56,10 +60,8 @@ const style = StyleSheet.create({
         justifyContent: 'space-between',
         paddingBottom: 6,
     },
-    subscriptionBtn:{
-        backgroundColor : '#cc5200',
-        borderRadius : 5,
-        flexDirection : 'row',
+    subscriptionBtnWrapper:{
+        width: '80%',
         alignSelf: 'center',
     },
     subscriptionLabel:{
@@ -82,17 +84,13 @@ const style = StyleSheet.create({
         letterSpacing: 0.8,
         fontWeight: '500'
     },
-    footerBtn:{
-        backgroundColor : '#cc5200',
-        borderRadius : 5,
-        padding: 10,
-        paddingHorizontal: 30
-    },
     footerBtn_text: {
         fontSize: 20,
         color: '#fff',
         letterSpacing: 0.8
-    }
+    },
+    touchable: {flex: 0.5, borderColor: 'black', borderWidth: 1},
+    text: {alignSelf: 'center'},
 })
 
 export default style;

@@ -56,6 +56,11 @@ const styles = StyleSheet.create({
         textAlign:"center",
         letterSpacing: 1.5,
         color:'#000'
+    },
+    buttonContainer:{
+        marginTop: 40,
+        width: '80%',
+        alignSelf: 'center',
     }
 })
 

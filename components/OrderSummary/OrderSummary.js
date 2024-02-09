@@ -1,19 +1,20 @@
-import React, { useContext } from 'react'
-import { Text, View } from 'react-native'
-import style from './styles'
-import GlobalContext from '../GlobalContext'
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
-import { useNavigation } from '@react-navigation/native'
+import React, { useContext, useCallback, useEffect, useState } from 'react';
+import { Alert, Text, View, Linking, Button } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+
+import style from './styles';
+import GlobalContext from '../GlobalContext';
 import config from '../../Utils/Config';
-import * as Linking from 'expo-linking';
 
 export const OrderSummary = () => {
   
   const navigation = useNavigation();
-  const {cartItem, totalAmount} = useContext(GlobalContext);
+  const { cartItem, totalAmount } = useContext(GlobalContext);
+  const [ paymentStatus, setPaymentStatus ] = useState('');
+  const [ transactionId, setTransactionId ] = useState(null);
 
   const OnPlaceOrderPressHandler = () => {
-    
     const options = {
       method: "POST",
       headers : {
@@ -24,11 +25,53 @@ export const OrderSummary = () => {
         "amount" : totalAmount
       })
     }
-
+    
     fetch(`${config.flaskapi}/home/payment`, options)
     .then(response => response.json())
-    .then(res => res.data.instrumentResponse.redirectInfo.url)
-    .then(link => Linking.openURL(link))
+    .then(response => openURL(response.data));
+  }
+  
+  const openURL = useCallback(async (transactionData) => {
+    const transactionUrl = transactionData.instrumentResponse.redirectInfo.url;
+    const transactionId = transactionData.merchantTransactionId;
+
+    const supported = await Linking.canOpenURL(transactionUrl);
+
+    if (supported) {
+      await Linking.openURL(transactionUrl);
+      setTransactionId(transactionId);
+    } else {
+      Alert.alert(`Don't know how to open this URL: ${transactionUrl}`);
+    }
+  });
+
+  if(transactionId){
+    (()=>{
+      const options = {
+            method : "GET",
+            headers : {
+              "Content-Type" : "application/json",
+              "accept": "application/json"
+            },
+          }
+
+      const timer1 = setInterval( async () => {
+        const status = await fetch(`${config.flaskapi}/home/paymentStatus?id=${transactionId}`, options);
+        const statusResponse =  await status.json();
+        setPaymentStatus(statusResponse.code);
+
+        if(statusResponse.code === "PAYMENT_SUCCESS"){
+          clearInterval(timer1);
+          navigation.navigate("Payment", {paymentStatus: "SUCCESS"})
+        }
+        console.log(statusResponse.code);
+      }, 10000)
+
+      return () => {
+        console.log("Interval cleared");
+        clearInterval(timer1, 30000);
+      };
+    })();
   }
 
   return (
@@ -40,20 +83,25 @@ export const OrderSummary = () => {
                 <Text style={style.addressType}>HOME</Text>
             </View>
             <Text style={style.addressInfo}>
-              Ground Floor, Near Chandan pookhri bhimpura ...
+              Ground Floor, Near Chandan pookhri bhimpura ... 
             </Text>
             <Text>9667648838</Text>
+            <View style={style.changeBtnWrapper}>
+              <Button 
+                onPress={()=> navigation.navigate('Profile')} 
+                title='Change' 
+                color='#cc5200'/>
+            </View>
         </View>
-
         <View style={style.subscriptionWrapper}>
           <Text style={style.priceHeader}>Subscription Details</Text>
-          <TouchableOpacity 
-            style={style.subscriptionBtn}
-            onPress={()=> navigation.navigate('Paymentcheckout') }>
-            <Text style={style.subscriptionLabel}>Select Subscription Details</Text>
-          </TouchableOpacity>
+          <View style={style.subscriptionBtnWrapper}>
+            <Button 
+            title='Select Subscription Details'
+            color='#cc5200'
+            onPress={()=> navigation.navigate('Paymentcheckout') } />
+          </View>
         </View>
-
         <View style={style.priceDetailsWrapper}>
           <Text style={style.priceHeader}>Price Details</Text>
           <View style={style.price_item}>
@@ -77,20 +125,19 @@ export const OrderSummary = () => {
           </View>
         </View>
       </ScrollView>
-
         <View style={style.footer}>
           <View>
             <Text style={style.footer_amount}>₹{totalAmount}</Text>
           </View>
           <View>
-            <TouchableOpacity 
-              style={style.footerBtn}
-              onPress={OnPlaceOrderPressHandler}>
-              <Text style={style.footerBtn_text}>Place Order</Text>
-            </TouchableOpacity>
+            <Button
+              title='Place order'
+              color='#cc5200'
+              // onPress={OnPlaceOrderPressHandler}
+              onPress={()=> navigation.navigate("Payment", {paymentStatus: "SUCCESS"})}>
+            </Button>
           </View>
         </View>
-
     </View>
   )
 }

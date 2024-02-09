@@ -5,6 +5,7 @@ const GlobalState = ({children}) =>{
     const [cartItem , setCartItem] = useState({});
     const [showCart , setShowCart] = useState(0);
     const [totalAmount, setTotalAmount] = useState(0);
+    const [userDetails , setUserDetails] = useState({email:'' , password:'', user_name:'', phone_no:'' , error:'', user_location:'-'});
 
     useEffect( ()=> {
         let amountArray = Object.keys(cartItem).map( item => (cartItem[item].amount*cartItem[item].cnt));
@@ -18,6 +19,7 @@ const GlobalState = ({children}) =>{
                 cartItem , setCartItem , 
                 showCart , setShowCart,
                 totalAmount, setTotalAmount,
+                userDetails, setUserDetails
                 }}>
             {children}
         </GlobalContext.Provider>

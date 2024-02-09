@@ -25,7 +25,23 @@ export default  {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "https",
+              "host": "*.myapp.io",
+              "pathPrefix": "/records"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ],
+      "package": "com.sipngo.sipngofrontend",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -46,17 +62,12 @@ export default  {
           "locationAlwaysAndWhenInUsePermission":"Allow Sipngo to Use your location"
         }
       ]
-    ]
-    ,
-    "android": {
-      "package": "com.sipngo.sipngofrontend",
-      "versionCode": 1
-    },
-     "extra": {
+    ],
+    "scheme" : "sipngo",
+    "extra": {
       "eas": {
-        "projectId": "fb5f5c7a-e365-48ce-a998-52a98267b410"
+        "projectId": "ba529d7e-4e70-4353-a54d-9cc6ffdb5068"
       }
     }
-
   }
 }

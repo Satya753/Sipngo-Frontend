@@ -1,14 +1,13 @@
-import { Text, View, Image , TextInput  } from 'react-native';
+import { Text, View, Image, TextInput, Button } from 'react-native';
 import { useEffect , useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { getAuth, signInWithEmailAndPassword} from 'firebase/auth';
-import Styles from '../Styles/signinstyles'
 import { MaterialIcons,Entypo } from '@expo/vector-icons'; 
 import { SafeAreaView } from 'react-native-safe-area-context';
 import showErrorToast from '../../Utils/ErrorHandlerPopup';
-
+import Styles from '../Styles/signinstyles'
 import '../../config/firebase';
+
 const auth  = getAuth();
 
 export default  function Signin() {
@@ -52,8 +51,7 @@ export default  function Signin() {
           default:
             setValue({...value, error: error.message});
             break;
-        }
-        
+        }   
     }
   }
 
@@ -91,13 +89,13 @@ export default  function Signin() {
                 secureTextEntry = {true}/>
             </View>
 
-            <TouchableOpacity 
-                style = {Styles.button} 
-                onPress={() => doSignIn()}>
-                  <Text style={Styles.buttonText}>
-                    LOGIN
-                  </Text>
-            </TouchableOpacity>
+            <View style={Styles.button}>
+              <Button 
+                  title='LOGIN'
+                  color="#ffa31a"
+                  onPress={() => doSignIn()}>
+              </Button>
+            </View>
           </View>
         </View>
         <View style={Styles.orWrapper}>
@@ -111,13 +109,13 @@ export default  function Signin() {
         </View>
 
           <Text style={Styles.orWrapperText}>Don't have an account ? Please signup</Text>
-          <TouchableOpacity 
-              style = {Styles.button} 
-              onPress={()=>navigation.navigate('Signup')}>
-                <Text style={Styles.buttonText}>
-                  SIGN UP
-                </Text>
-          </TouchableOpacity>
+          <View style={Styles.button}>
+            <Button
+             color="#ffa31a"
+             title='SIGN UP'
+             onPress={()=>navigation.navigate('Signup')}>
+            </Button>
+          </View>
         </View>
       </View>
     </SafeAreaView>

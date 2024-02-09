@@ -1,29 +1,31 @@
 import { View, StyleSheet } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { RootSiblingParent } from 'react-native-root-siblings';
 import Constants from 'expo-constants';
+
 import AppNavigator from './components/AppNavigator';
 import GlobalState from './components/GlobalState';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import userAuthentication from './components/Authentication/userAuthentication';
 import AuthStack from './components/Authentication/AuthStack';
-import './config/firebase';
 import DrawerNavigator from './components/DrawerNavigator';
-import { RootSiblingParent } from 'react-native-root-siblings';
+import './config/firebase';
 
 function Root(){
   return (<DrawerNavigator/>);
 }
+
 export default function App() {
   const {user} = userAuthentication();
   global.d = {...user}
   global.user_validated = false;
-  console.log(d['uid'])
+  console.log(user);
 
   return (
     <RootSiblingParent>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <View style={styles.container}>
           <GlobalState>
-            {user ? <AppNavigator/>:<AuthStack/>}
+            {user ? <AppNavigator />:<AuthStack/>}
           </GlobalState>
         </View>
       </GestureHandlerRootView>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "418587868994",
+    "project_id": "sipngoauth",
+    "storage_bucket": "sipngoauth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418587868994:android:d41f785538f1d1f27752db",
+        "android_client_info": {
+          "package_name": "com.company.sipngo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418587868994-f01enpj5bij7je9a575spps9u3okmnsk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfy2dPF26gGqxeXsSKFwny7MtWHOE461Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418587868994-f01enpj5bij7je9a575spps9u3okmnsk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

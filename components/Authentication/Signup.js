@@ -46,7 +46,8 @@ export default function Signup() {
               user_name:userDetails.user_name
           })
       };
-      const responsedata = await  fetch(`${config.flaskapi}/home/signUp`,requestOptions);
+      const responsedata = await fetch(`${config.flaskapi}/home/signUp`,requestOptions);
+      setUserDetails({});
       return Promise.resolve(responsedata);
     }
     catch(error){
@@ -69,7 +70,11 @@ export default function Signup() {
   }
 
   useEffect( () => {
-    if(userDetails.error != '')showErrorToast(userDetails.error);
+    if(userDetails.error != null){
+      showErrorToast(userDetails.error);
+    }
+
+    return ()=> setUserDetails({});
   }, [userDetails.error]);
 
   const onFocusHandler = (inputField) => {

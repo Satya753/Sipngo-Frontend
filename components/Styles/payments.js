@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     },
     button : {
         backgroundColor: "#cc5200",
-        borderRadius : 10,
+        borderRadius : 3,
         margin : 15
     },
     buttonText:{
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     buttonView:{
         flexDirection : 'row',
         justifyContent:'space-between',
-        top : 10
+        alignSelf: 'center'
     },
     slotContainer : {
         backgroundColor : '#fff',

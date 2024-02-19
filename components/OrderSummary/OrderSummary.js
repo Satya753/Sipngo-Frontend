@@ -99,7 +99,7 @@ export const OrderSummary = () => {
             <Button 
             title='Select Subscription Details'
             color='#cc5200'
-            onPress={()=> navigation.navigate('Paymentcheckout') } />
+            onPress={()=> navigation.navigate('SubscriptionPage') } />
           </View>
         </View>
         <View style={style.priceDetailsWrapper}>
@@ -133,8 +133,8 @@ export const OrderSummary = () => {
             <Button
               title='Place order'
               color='#cc5200'
-              // onPress={OnPlaceOrderPressHandler}
-              onPress={()=> navigation.navigate("Payment", {paymentStatus: "SUCCESS"})}>
+              onPress={OnPlaceOrderPressHandler}>
+              {/* onPress={()=> navigation.navigate("Payment", {paymentStatus: "SUCCESS"})} */}
             </Button>
           </View>
         </View>

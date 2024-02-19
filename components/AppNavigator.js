@@ -6,7 +6,7 @@ import * as Linking from 'expo-linking';
 import HomeScreen from './HomeScreen'
 import Checkout from './Checkout/Checkout';
 import Categories from './Categories/Categories';
-import Paymentcheckout from './Checkout/Paymentcheckout';
+import SubscriptionPage from './Checkout/SubscriptionPage';
 import SubscriptionDetails from './Subscription/SubscriptionDetails'
 import DrawerNavigator from './DrawerNavigator';
 import { OrderSummary } from './OrderSummary/OrderSummary';
@@ -63,8 +63,8 @@ const AppNavigator = () => {
             headerShown : false
           }}/>
         <Stack.Screen
-          name = "Paymentcheckout"
-          component = {Paymentcheckout} 
+          name = "SubscriptionPage"
+          component = {SubscriptionPage} 
           options={{
             headerShown: false
           }}/>
@@ -94,7 +94,6 @@ const AppNavigator = () => {
           }} />
       </Stack.Navigator>
     </NavigationContainer>
-    
   );
 };
 

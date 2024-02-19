@@ -10,7 +10,7 @@ import styles  from '../Styles/payments';
 
 import {RadioButton} from 'react-native-paper'
 
-const Paymentcheckout = () => {
+const SubscriptionPage = () => {
 
     const {cartItem, setShowCart, totalAmount}  = useContext(GlobalContext);
     const [markedDays , setMarkedDays] = useState({})
@@ -135,4 +135,4 @@ const Paymentcheckout = () => {
     )
 }
 
-export default Paymentcheckout;
+export default SubscriptionPage;

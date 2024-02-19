@@ -81,21 +81,21 @@ const styles = StyleSheet.create({
     },
     footer_button : {
         backgroundColor : '#cc5200',
-        borderRadius : 10,
+        borderRadius : 4,
         paddingVertical : 15,
-        paddingHorizontal : 5,
+        marginBottom: 10,
+        width: '93%',
         flexDirection : 'row',
         alignItems: 'center',
-        width : '90%',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        justifyContent: 'space-between'
     },
     footer_buttonText : {
         textAlign : 'center',
         fontSize : 20,
         color : '#fff',
         fontWeight : '500',
-        width: '70%',
-        paddingHorizontal: 5
+        paddingHorizontal: 25
     },
     footer_totalAmount : {
         color: '#fff',

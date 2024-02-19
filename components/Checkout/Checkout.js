@@ -76,7 +76,7 @@ const Checkout = ()=>{
               <Text style={styles.footer_buttonText}>
                 Checkout
               </Text>
-              <View>
+              <View style={{paddingRight: 25}}>
                 <Text style={styles.footer_totalAmount}>₹{totalAmount}</Text>
                 <Text style={styles.footer_totalText} >TOTAL</Text>
               </View>

@@ -1,8 +1,9 @@
 import 'dotenv/config';
-export default  {
+export default {
   "expo": {
+    "owner": "shubham_singh_rajput",
     "name": "sipngofrontend",
-    "slug": "snack-868fd431-f9ae-4e43-9e4f-16837b7774e4",
+    "slug": "test",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -55,18 +56,18 @@ export default  {
       firebaseMessagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
       firebaseAppId: process.env.FIREBASE_APP_ID
     },
-    "plugins":[
+    "plugins": [
       [
         "expo-location",
         {
-          "locationAlwaysAndWhenInUsePermission":"Allow Sipngo to Use your location"
+          "locationAlwaysAndWhenInUsePermission": "Allow Sipngo to Use your location"
         }
       ]
     ],
-    "scheme" : "sipngo",
+    "scheme": "sipngo",
     "extra": {
       "eas": {
-        "projectId": "ba529d7e-4e70-4353-a54d-9cc6ffdb5068"
+        "projectId": "1e5ba208-c9a5-4029-b0ad-54cc177e3d46"
       }
     }
   }
